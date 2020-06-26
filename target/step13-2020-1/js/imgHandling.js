@@ -73,7 +73,9 @@ function sketch() {
   canvas.width = 800;
   canvas.height = 600;
   var ctx = canvas.getContext('2d');
-  ctx.drawImage(this, 0, 0, 800, 600);
+
+  //NOTE: the width and height (params 4 and 5) must be size proportionally to the params 1&2 (canvas size)
+  ctx.drawImage(this, 0, 0, this.width * 0.5, this.height * 0.5);
 }
 
 /*
