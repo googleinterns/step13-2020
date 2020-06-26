@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-let arrayOfProducts = Array();
+
+var arrayOfProducts = Array();
 
 async function fetchDataAsync() {
     const response = await fetch('test.html');
