@@ -26,6 +26,8 @@ function handleFiles() {
       const img = document.createElement("img");
       img.src = URL.createObjectURL(this.files[i]);
       img.height = 60;
+
+      // When display feature in the 2nd loop is removed, comment revoke out
       img.onload = function() {
         URL.revokeObjectURL(this.src);
       }

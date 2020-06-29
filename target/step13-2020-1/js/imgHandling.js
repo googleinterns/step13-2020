@@ -2,6 +2,9 @@ const fileSelect = document.getElementById("fileSelect"),
       fileElem = document.getElementById("fileElem"),
       fileList = document.getElementById("fileList");
 
+const submitForm = document.getElementById("imgForm");
+const formArea = document.getElementById("num");
+
 fileSelect.addEventListener("click", function (e) {
   if (fileElem) {
     fileElem.click();
@@ -26,6 +29,8 @@ function handleFiles() {
       const img = document.createElement("img");
       img.src = URL.createObjectURL(this.files[i]);
       img.height = 60;
+
+      // When display feature in the 2nd loop is removed, comment revoke out
       img.onload = function() {
         URL.revokeObjectURL(this.src);
       }
@@ -33,7 +38,27 @@ function handleFiles() {
       const info = document.createElement("span");
       info.innerHTML = this.files[i].name + ": " + this.files[i].size + " bytes";
       li.appendChild(info);
+
+      if (formArea.value == null) {
+        formArea.value = "0";
+      }
+
+      formArea.value = parseInt(formArea.value) + 1;
     }
+
+    for (let i = 1; i <= formArea.value; i++) {
+
+      const file = document.createElement("input");
+      var url = URL.createObjectURL(this.files[i]);
+      file.type = "hidden";
+      file.name = "file" + i.toString(10);
+      file.value = url;
+      formArea.appendChild(file);
+    }
+
+    const submitButton = document.createElement("input");
+    submitButton.type = "submit";
+    formArea.appendChild(submitButton);
 
     for (let i = 0; i < this.files.length; i++) {
       
