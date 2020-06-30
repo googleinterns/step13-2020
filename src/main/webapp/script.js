@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 var arrayOfProducts = Array();
 var array = Array();
 
@@ -108,7 +109,6 @@ function filteringEyeliner(){
     }
 } 
 
-
 function filteringEyeshadow(){
     var checkBox = document.getElementById("eyeshadow");
     if(checkBox.checked == true){
@@ -125,7 +125,6 @@ function filteringEyeshadow(){
         document.getElementById("brands").innerHTML = array;
     }
 } 
-
 
 function filteringLipliner(){
     var checkBox = document.getElementById("lipliner");
@@ -161,27 +160,6 @@ function filteringMascara(){
     }
 } 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function filteringTag(){
     var checkBox = document.getElementById("result");
     if(checkBox.checked == true){
@@ -199,3 +177,10 @@ function filteringTag(){
         document.getElementById("tags").innerHTML = array;
     }
 } 
+
+//unncessary atm
+async function doStuff(){
+    await fetchDataAsync();
+    filtering();
+}
+
