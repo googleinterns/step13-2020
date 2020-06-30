@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<body onload="fetchDataAysnc()"></body>
+    <h2>Product Types</h2>
+        <label><input type="checkbox" name="result" id="lipstick" value="lipstick" onclick="filteringLipsticks()">Lipsticks
+        </label>
+        <br>
+        <label><input type="checkbox" name="result" id="blush" value="blush" onclick="filteringBlush()">Blush
+        </label>
+        <br>
+        <label><input type="checkbox" name="result" id="bronzer" value="bronzer" onclick="filteringBronzer()">Bronzer
+        </label>
+        <br>
+        <label><input type="checkbox" name="result" id="eyebrow" value="eyebrow" onclick="filteringEyebrow()">Brows
+        </label>
+        <br>
+        <label><input type="checkbox" name="result" id="eyeliner" value="eyeliner" onclick="filteringEyeliner()">Eyeliner
+        </label>
+        <br>
+        <label><input type="checkbox" name="result" id="eyeshadow" value="eyeshadow" onclick="filteringEyeshadow()">Eyeshadow
+        </label>
+        <br>
+        <label><input type="checkbox" name="result" id="mascara" value="mascara" onclick="filteringMascara()">Mascara
+        </label>
+        <br>
+        <label><input type="checkbox" name="result" id="lipliner" value="lipliner" onclick="filteringLipliner()">Lipliner
+        </label>
+        <br>
+    <h2>Tags</h2>
+        <label><input type="checkbox" name="result" id="result" value="gluten free" onclick="filtering()">Gluten Free
+        </label>
+        <br>
+        <label><input type="checkbox" name="result" id="result" value="hypoallergenic" onclick="filtering()">Hypoallergenic
+        </label>
+        <br>
+<div id='productType'> </div>
+  <br>
+<div id='tags'></div>
+  <br>
+<div id='price'></div>
+</body>

@@ -12,26 +12,190 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-let arrayOfProducts = Array();
+var arrayOfProducts = Array();
+var array = Array();
 
 async function fetchDataAsync() {
     const response = await fetch('test.html');
     arrayOfProducts = await response.json();
+
 }
 
-function filtering(){
-    var checkBox = document.getElementsBy("result");
+//functions for filtering by product type
+function filteringLipsticks(){
+    var checkBox = document.getElementById("lipstick");
     if(checkBox.checked == true){
         for(i = 0; i <  arrayOfProducts.length; i++){
-           let prodbrand = arrayOfProducts[i].brand;
-           let valName = document.getElementById("result").value;
-           if(prodBrand == valName){
-               document.write(prodName);
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("lipstick").value;
+           let prodName = arrayOfProducts[i].name;
+           let prodType = arrayOfProducts[i].product_type;
+           if(prodType == valName){
+               let product = (" " + prodBrand + ": " + prodName + "> $" + arrayOfProducts[i].price);
+               array.push(product);
            }
         }
+        document.getElementById("productType").innerHTML = array;
     }
 } 
-async function doStuff(){
-    await fetchDataAsync();
-    filtering();
-}
+
+function filteringBlush(){
+    var checkBox = document.getElementById("blush");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("blush").value;
+           let prodName = arrayOfProducts[i].name;
+           let prodType = arrayOfProducts[i].product_type;
+           if(prodType == valName){
+               let product = (" " + prodBrand + ": " + prodName + "> $" + arrayOfProducts[i].price);
+               array.push(product);
+           }
+        }
+        document.getElementById("productType").innerHTML = array;
+    }
+} 
+
+
+function filteringBronzer(){
+    var checkBox = document.getElementById("bronzer");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("bronzer").value;
+           let prodName = arrayOfProducts[i].name;
+           let prodType = arrayOfProducts[i].product_type;
+           if(prodType == valName){
+               let product = (" " + prodBrand + ": " + prodName + "> $" + arrayOfProducts[i].price);
+               array.push(product);
+           }
+        }
+        document.getElementById("productType").innerHTML = array;
+    }
+} 
+
+function filteringEyebrow(){
+    var checkBox = document.getElementById("eyebrow");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("eyebrow").value;
+           let prodName = arrayOfProducts[i].name;
+           let prodType = arrayOfProducts[i].product_type;
+           if(prodType == valName){
+               let product = (" " + prodBrand + ": " + prodName + "> $" + arrayOfProducts[i].price);
+               array.push(product);
+           }
+        }
+        document.getElementById("productType").innerHTML = array;
+    }
+} 
+
+function filteringEyeliner(){
+    var checkBox = document.getElementById("eyeliner");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("eyeliner").value;
+           let prodName = arrayOfProducts[i].name;
+           let prodType = arrayOfProducts[i].product_type;
+           if(prodType == valName){
+               let product = (" " + prodBrand + ": " + prodName + "> $" + arrayOfProducts[i].price);
+               array.push(product);
+           }
+        }
+        document.getElementById("productType").innerHTML = array;
+    }
+} 
+
+
+function filteringEyeshadow(){
+    var checkBox = document.getElementById("eyeshadow");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("eyeshadow").value;
+           let prodName = arrayOfProducts[i].name;
+           let prodType = arrayOfProducts[i].product_type;
+           if(prodType == valName){
+               let product = (" " + prodBrand + ": " + prodName + "> $" + arrayOfProducts[i].price);
+               array.push(product);
+           }
+        }
+        document.getElementById("brands").innerHTML = array;
+    }
+} 
+
+
+function filteringLipliner(){
+    var checkBox = document.getElementById("lipliner");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("lipliner").value;
+           let prodName = arrayOfProducts[i].name;
+           let prodType = arrayOfProducts[i].product_type;
+           if(prodType == valName){
+               let product = (" " + prodBrand + ": " + prodName + "> $" + arrayOfProducts[i].price);
+               array.push(product);
+           }
+        }
+        document.getElementById("productType").innerHTML = array;
+    }
+} 
+
+function filteringMascara(){
+    var checkBox = document.getElementById("mascara");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("mascara").value;
+           let prodName = arrayOfProducts[i].name;
+           let prodType = arrayOfProducts[i].product_type;
+           if(prodType == valName){
+               let product = (" " + prodBrand + ": " + prodName + "> $" + arrayOfProducts[i].price);
+               array.push(product);
+           }
+        }
+        document.getElementById("productType").innerHTML = array;
+    }
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function filteringTag(){
+    var checkBox = document.getElementById("result");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodTags = arrayOfProducts[i].tag_list
+           let prodBrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("result").value;
+           let prodName = arrayOfProducts[i].name;
+           if(tag_list.includes(valName)){
+               let product = (" " + prodBrand +  + ": " + prodName 
+               + "> $" + arrayOfProducts[i].price + "\n");
+               array.push(product);
+           }
+        }
+        document.getElementById("tags").innerHTML = array;
+    }
+} 
