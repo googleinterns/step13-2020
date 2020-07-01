@@ -1,8 +1,11 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+    <script src="script.js" type="text/javascript"></script>
+</head>
 <body>
-<body onload="fetchDataAysnc()"></body>
+<body onload="fetchDataAsync()"></body>
     <h2>Product Types</h2>
         <label><input type="checkbox" name="result" id="lipstick" value="lipstick" onclick="filteringLipsticks()">Lipsticks
         </label>
@@ -29,15 +32,30 @@
         </label>
         <br>
     <h2>Tags</h2>
-        <label><input type="checkbox" name="result" id="result" value="gluten free" onclick="filtering()">Gluten Free
+        <label><input type="checkbox" name="result" id="gluten free" value="Gluten Free" onclick="gluten()">Gluten Free
         </label>
         <br>
-        <label><input type="checkbox" name="result" id="result" value="hypoallergenic" onclick="filtering()">Hypoallergenic
+        <label><input type="checkbox" name="result" id="result" value="hypoallergenic" onclick="hypo()">Hypoallergenic
         </label>
         <br>
-<div id='productType'> </div>
+<div id='lipstick_'> </div>
   <br>
-<div id='tags'></div>
+<div id='blush_'> </div>
   <br>
-<div id='price'></div>
+<div id='bronzer_'> </div>
+  <br> 
+<div id='brow_'> </div>
+  <br>
+<div id='eyeliner_'> </div>
+  <br>
+<div id='eyeshadow_'> </div>
+  <br>
+<div id='mascara_'> </div>
+  <br>
+<div id='lipliner_'> </div>
+  <br> 
+<div id='gluten'></div>
+  <br>
+<div id='hypo'></div>
 </body>
+</html>
