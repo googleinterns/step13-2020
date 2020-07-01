@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body>
+    <body onload="getImage()">
         <form id="imgForm" method="POST" enctype="multipart/form-data">
         <input type="file" id="fileElem" name="fileUploader" multiple accept="image/*" value="Select Files">
         <div id="fileList">
@@ -15,6 +15,8 @@
         </form>
         </br>
         <a href="/serve">Link</a>
+
+        <img id="test" width="200" height="150" src="" >
     </body>
 
     <script src="../js/imgHandling.js"></script>

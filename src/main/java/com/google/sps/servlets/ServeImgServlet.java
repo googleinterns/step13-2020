@@ -46,29 +46,33 @@ public class ServeImgServlet extends HttpServlet {
       throws IOException {
     
       String key = null;
-      int count = 0;
+      long id = 0;
+      long searchForID = Long.parseLong(req.getParameter("getImgWithID"));
 
-      Query query = new Query("ImageTest");
+      Query query = new Query("ImageTest3");
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       PreparedQuery results = datastore.prepare(query);
 
-      List<String> links = new ArrayList<>();
-
       for (Entity entity : results.asIterable()) {
 
-        if (count > 0) {
+        key = (String) entity.getProperty("blobkey");
+        id = (long) entity.getProperty("id");
+
+        if (id == searchForID) {
           break;
         }
-
-        key = (String) entity.getProperty("blobkey");
-        
-        count++;
       }
 
       if (key != null) {
         BlobKey blobKey = new BlobKey(key);
         blobstoreService.serve(blobKey, res);
       }
+
+
+      /*
+      BlobKey blobKey = new BlobKey(req.getParameter("blob-key"));
+      blobstoreService.serve(blobKey, res);
+      */
     }
 }

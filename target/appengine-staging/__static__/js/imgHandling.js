@@ -84,3 +84,12 @@ function fetchBlobstoreUrlAndShowForm() {
         messageForm.action = imageUploadUrl;
       });
 }
+
+function getImage() {
+
+  fetch('/serve').then(response).then((texts) => {
+    const imgElement = document.getElementById('test');
+    imgElement.getAttribute("src") = texts;
+  });
+
+}

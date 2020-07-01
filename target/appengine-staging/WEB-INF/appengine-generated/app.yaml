@@ -39,6 +39,10 @@ handlers:
   script: unused
   login: optional
   secure: optional
+- url: .*\.jsp
+  script: unused
+  login: optional
+  secure: optional
 - url: /serve
   script: unused
   login: optional
@@ -47,7 +51,7 @@ handlers:
   script: unused
   login: optional
   secure: optional
-- url: /img
+- url: /upload
   script: unused
   login: optional
   secure: optional

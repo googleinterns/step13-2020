@@ -27,26 +27,31 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
+
 import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+
 import com.google.appengine.api.blobstore.BlobInfo;
 import com.google.appengine.api.blobstore.BlobInfoFactory;
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.ServingUrlOptions;
 
-@WebServlet("/img")
+@WebServlet("/upload")
 public class UploadImgServlet extends HttpServlet {
 
     private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
@@ -56,19 +61,43 @@ public class UploadImgServlet extends HttpServlet {
         throws ServletException, IOException {
 
         Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
-        List<BlobKey> blobKeys = blobs.get("fileUploader");
+        List<BlobKey> blobKeys = blobs.get("myFile");
+        long id = Long.parseLong(req.getParameter("id_num"));
+        boolean found = false;
 
         if (blobKeys == null || blobKeys.isEmpty()) {
             res.sendRedirect("/");
         }
         else {
-          Entity imgTest = new Entity("ImageTest");
-          imgTest.setProperty("blobkey", blobKeys.get(0).getKeyString());
+          //NOTE: This is for testing only. The real database will use the username as the identifier
+
+          Query query = new Query("ImageTest3");
 
           DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-          datastore.put(imgTest);
-        }
+          PreparedQuery results = datastore.prepare(query);
+
+          for (Entity entity : results.asIterable()) {
+
+            if (id == (long) entity.getProperty("id")) {
+              found = true;
+              break;
+            }
+          }
+
+          if (found) {
+            //This condition will not exist in the final version. The final will need an error for not logged in
+            res.sendRedirect("/");
+          } else {
+             Entity imgTest = new Entity("ImageTest3");
+             imgTest.setProperty("blobkey", blobKeys.get(0).getKeyString());
+             imgTest.setProperty("id", id);
+
+             datastore.put(imgTest);
+          }
+        }        
         
+        res.sendRedirect("/Pages/index.jsp");
+
         /*
         if (blobKeys == null || blobKeys.isEmpty()) {
             res.sendRedirect("/");
