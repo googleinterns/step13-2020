@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <body>
-        <input type="file" id="fileElem" multiple accept="image/*" style="display:none">
-        <a href="#" id="fileSelect">Select some files</a> 
+    <body onload="getImage()">
+        <form id="imgForm" method="POST" enctype="multipart/form-data">
+        <input type="file" id="fileElem" name="fileUploader" multiple accept="image/*" value="Select Files">
         <div id="fileList">
             <p>No files selected!</p>
         </div>
-        <form id="imgForm" name="imgForm" action="POST">
-            <input id="num" type="hidden" name="num" value="0">
-        </form>
         
+        <input type="submit" value="Submit">
+
         <canvas width="800" height="600" id="canvas"> 
             An alternative text describing what your canvas displays. 
         </canvas>
+        </form>
+        </br>
+        <a href="/serve">Link</a>
+
+        <img id="test" width="200" height="150" src="" >
     </body>
 
     <script src="../js/imgHandling.js"></script>

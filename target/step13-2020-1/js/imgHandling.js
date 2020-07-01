@@ -1,16 +1,5 @@
-const fileSelect = document.getElementById("fileSelect"),
-      fileElem = document.getElementById("fileElem"),
+const fileElem = document.getElementById("fileElem"),
       fileList = document.getElementById("fileList");
-
-const submitForm = document.getElementById("imgForm");
-const formArea = document.getElementById("num");
-
-fileSelect.addEventListener("click", function (e) {
-  if (fileElem) {
-    fileElem.click();
-  }
-  e.preventDefault(); // prevent navigation to "#"
-}, false);
 
 fileElem.addEventListener("change", handleFiles, false); 
 
@@ -38,27 +27,7 @@ function handleFiles() {
       const info = document.createElement("span");
       info.innerHTML = this.files[i].name + ": " + this.files[i].size + " bytes";
       li.appendChild(info);
-
-      if (formArea.value == null) {
-        formArea.value = "0";
-      }
-
-      formArea.value = parseInt(formArea.value) + 1;
     }
-
-    for (let i = 1; i <= formArea.value; i++) {
-
-      const file = document.createElement("input");
-      var url = URL.createObjectURL(this.files[i]);
-      file.type = "hidden";
-      file.name = "file" + i.toString(10);
-      file.value = url;
-      formArea.appendChild(file);
-    }
-
-    const submitButton = document.createElement("input");
-    submitButton.type = "submit";
-    formArea.appendChild(submitButton);
 
     for (let i = 0; i < this.files.length; i++) {
       
@@ -67,6 +36,7 @@ function handleFiles() {
       display.onload = sketch;
       display.src = URL.createObjectURL(this.files[i]);
 
+      /*
       img.onload = function() {
         URL.revokeObjectURL(this.src);
 
@@ -89,6 +59,7 @@ function handleFiles() {
         ctx.drawImage(img, width, height);
 
       }
+      */
     }
   }
 }
@@ -103,17 +74,22 @@ function sketch() {
   ctx.drawImage(this, 0, 0, this.width * 0.5, this.height * 0.5);
 }
 
-/*
-function draw() {
-  var ctx = document.getElementById('canvas').getContext('2d');
-  var img = new Image();
-  img.onload = function() {
-    for (var i = 0; i < 4; i++) {
-      for (var j = 0; j < 3; j++) {
-        ctx.drawImage(img, j * 50, i * 38, 50, 38);
-      }
-    }
-  };
-  img.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
+function fetchBlobstoreUrlAndShowForm() {
+  fetch('/serve')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('imgForm');
+        messageForm.action = imageUploadUrl;
+      });
 }
-*/
+
+function getImage() {
+
+  fetch('/serve').then(response).then((texts) => {
+    const imgElement = document.getElementById('test');
+    imgElement.getAttribute("src") = texts;
+  });
+
+}
