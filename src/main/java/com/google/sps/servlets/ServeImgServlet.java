@@ -36,43 +36,48 @@ import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import javax.servlet.annotation.WebServlet;
 
+/**
+ * The objective of this class is to serve images that are specified by an ID number.
+ * This class will not exist in the final version. It is only for testing.
+ */
 @WebServlet("/serve")
 public class ServeImgServlet extends HttpServlet {
 
-   private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+  private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
-    @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse res)
-      throws IOException {
+  //Note: All things ID related will be replaced with the authenticated user name
+  @Override
+  public void doGet(HttpServletRequest req, HttpServletResponse res)
+    throws IOException {
     
-      String key = null;
-      long id = 0;
-      long searchForID = Long.parseLong(req.getParameter("getImgWithID"));
+    String key = null;
+    boolean found = false;
+    long id = 0;
+    long searchForID = Long.parseLong(req.getParameter("getImgWithID"));
 
-      Query query = new Query("ImageTest3");
+    //Prepares for a database query
+    Query query = new Query("ImageTest3");
 
-      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-      PreparedQuery results = datastore.prepare(query);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
 
-      for (Entity entity : results.asIterable()) {
+    // Iterates through the loop to retrieve the string representation of the binary data
+    // that has an ID number that matches the ID specified on the form.
+    for (Entity entity : results.asIterable()) {
 
-        key = (String) entity.getProperty("blobkey");
-        id = (long) entity.getProperty("id");
+      key = (String) entity.getProperty("blobkey");
+      id = (long) entity.getProperty("id");
 
-        if (id == searchForID) {
-          break;
-        }
+      if (id == searchForID) {
+        found = true;
+        break;
       }
-
-      if (key != null) {
-        BlobKey blobKey = new BlobKey(key);
-        blobstoreService.serve(blobKey, res);
-      }
-
-
-      /*
-      BlobKey blobKey = new BlobKey(req.getParameter("blob-key"));
-      blobstoreService.serve(blobKey, res);
-      */
     }
+
+    // Serves the image of the ID is found
+    if (found) {
+      BlobKey blobKey = new BlobKey(key);
+      blobstoreService.serve(blobKey, res);
+    }
+  }
 }
