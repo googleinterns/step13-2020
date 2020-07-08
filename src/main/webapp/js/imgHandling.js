@@ -1,13 +1,5 @@
-const fileSelect = document.getElementById("fileSelect"),
-      fileElem = document.getElementById("fileElem"),
+const fileElem = document.getElementById("fileElem"),
       fileList = document.getElementById("fileList");
-
-fileSelect.addEventListener("click", function (e) {
-  if (fileElem) {
-    fileElem.click();
-  }
-  e.preventDefault(); // prevent navigation to "#"
-}, false);
 
 fileElem.addEventListener("change", handleFiles, false); 
 
@@ -43,29 +35,6 @@ function handleFiles() {
 
       display.onload = sketch;
       display.src = URL.createObjectURL(this.files[i]);
-
-      img.onload = function() {
-        URL.revokeObjectURL(this.src);
-
-        if (width > height) {
-          if (width > MAX_WIDTH) {
-            height *= MAX_WIDTH / width;
-            width = MAX_WIDTH;
-          } 
-          else {
-            if (height > MAX_HEIGHT) {
-              width *= MAX_HEIGHT / height;
-              height = MAX_HEIGHT;
-            }
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-        var ctx = document.getElementById('canvas').getContext('2d');
-        ctx.drawImage(img, width, height);
-
-      }
     }
   }
 }
@@ -80,17 +49,22 @@ function sketch() {
   ctx.drawImage(this, 0, 0, this.width * 0.5, this.height * 0.5);
 }
 
-/*
-function draw() {
-  var ctx = document.getElementById('canvas').getContext('2d');
-  var img = new Image();
-  img.onload = function() {
-    for (var i = 0; i < 4; i++) {
-      for (var j = 0; j < 3; j++) {
-        ctx.drawImage(img, j * 50, i * 38, 50, 38);
-      }
-    }
-  };
-  img.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
+function fetchBlobstoreUrlAndShowForm() {
+  fetch('/serve')
+      .then((response) => {
+        return response.text();
+      })
+      .then((imageUploadUrl) => {
+        const messageForm = document.getElementById('imgForm');
+        messageForm.action = imageUploadUrl;
+      });
 }
-*/
+
+function getImage() {
+
+  fetch('/serve').then(response).then((texts) => {
+    const imgElement = document.getElementById('test');
+    imgElement.getAttribute("src") = texts;
+  });
+
+}
