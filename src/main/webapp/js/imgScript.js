@@ -32,21 +32,6 @@ async function start() {
       const drawBox = new faceapi.draw.DrawBox(box, { label: result.toString() })
       drawBox.draw(canvas)
     })
-
-    /*
-    var context = canvas.getContext('2d')
-    var imageData = context.getImageData(0,0, canvas.width, canvas.height)
-    var data = imageData.data
-    console.log(data[0])
-    console.log(data[1])
-    console.log(data[2])*/
-    /*
-    for (var i = data.length - 17; i < data.length; i += 4) {
-      console.log(data[i])
-      console.log(data[i+1])
-      console.log(data[i+2])
-    }
-    */
   })
 }
 

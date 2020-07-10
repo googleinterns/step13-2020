@@ -82,7 +82,7 @@ public class RecommendationServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
     throws IOException {
-  
+
     HashMap<String, Integer> toneMap = new HashMap<>();
     HashMap<String, Integer> typeMap = new HashMap<>();
     HashMap<String, Integer> brandMap = new HashMap<>();
