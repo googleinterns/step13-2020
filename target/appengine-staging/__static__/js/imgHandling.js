@@ -35,31 +35,6 @@ function handleFiles() {
 
       display.onload = sketch;
       display.src = URL.createObjectURL(this.files[i]);
-
-      /*
-      img.onload = function() {
-        URL.revokeObjectURL(this.src);
-
-        if (width > height) {
-          if (width > MAX_WIDTH) {
-            height *= MAX_WIDTH / width;
-            width = MAX_WIDTH;
-          } 
-          else {
-            if (height > MAX_HEIGHT) {
-              width *= MAX_HEIGHT / height;
-              height = MAX_HEIGHT;
-            }
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-        var ctx = document.getElementById('canvas').getContext('2d');
-        ctx.drawImage(img, width, height);
-
-      }
-      */
     }
   }
 }

@@ -20,11 +20,20 @@
 
         <input type="number" id="pickID" placeholder="0" onchange="getNumber()">
         <a href="/" id="getRequestBtn">Click me</a>
+
+        </br>
+
+        <input type="number" id="getID" placeholder="0" onchange="getDesc()">
+        <a href="/" id="getRequestBtn">Click me</a>
     </body>
 
     <script>
         function getNumber() {
           document.getElementById("getRequestBtn").href = "/serve?getImgWithID=" + document.getElementById("pickID").value;
-        }    
+        }
+
+        function getDesc() {
+          document.getElementById("getRequestBtn").href = "/analyze?getImgWithID=" + document.getElementById("getID").value;
+        }
     </script>
 </html>

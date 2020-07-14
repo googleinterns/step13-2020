@@ -43,11 +43,23 @@ handlers:
   script: unused
   login: optional
   secure: optional
+- url: /image-analysis
+  script: unused
+  login: optional
+  secure: optional
 - url: /serve
   script: unused
   login: optional
   secure: optional
 - url: /auth
+  script: unused
+  login: optional
+  secure: optional
+- url: /recommend
+  script: unused
+  login: optional
+  secure: optional
+- url: /analyze
   script: unused
   login: optional
   secure: optional
