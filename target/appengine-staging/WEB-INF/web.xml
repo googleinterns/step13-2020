@@ -6,9 +6,19 @@
         <servlet-class>org.apache.jsp.Pages.index_jsp</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>org.apache.jsp.Pages.test_jsp</servlet-name>
+        <servlet-class>org.apache.jsp.Pages.test_jsp</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>org.apache.jsp.Pages.index_jsp</servlet-name>
         <url-pattern>/Pages/index.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>org.apache.jsp.Pages.test_jsp</servlet-name>
+        <url-pattern>/Pages/test.jsp</url-pattern>
     </servlet-mapping>
 
 <!-- JSPC servlet mappings end -->
