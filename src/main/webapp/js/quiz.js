@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-let userSelectedAnswers = [];
+let userSelectedAnswers = [];d49f
 (window.onload = function(){
   function buildQuiz(){
     const output = [];
