@@ -17,7 +17,7 @@ function getProds() {
   fetch('/product').then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
     products.forEach((offer) => {
-      productGrid.innerHTML = 
+      productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
@@ -39,6 +39,8 @@ function getProds() {
 }
 
 function filter() {
+
+  document.getElementById('prodGrid').innerHTML = "";
 
   var brand = "";
   var type = "";
@@ -100,12 +102,12 @@ function filter() {
   "&type=" + type +
   "&tone=" + tone +
   "&ingredients=" + ingredients +
-  "&price" + price;
+  "&price=" + price;
 
   fetch(link).then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
     products.forEach((offer) => {
-      productGrid.innerHTML = 
+      productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +

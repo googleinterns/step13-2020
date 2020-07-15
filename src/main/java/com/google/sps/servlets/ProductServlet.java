@@ -71,7 +71,7 @@ public class ProductServlet extends HttpServlet {
     String name = request.getParameter("name");
 
     //Final Entity will be UserData. This section begins to populate the database
-    Entity ProductsTest1 = new Entity("ProductsTest1");
+    Entity ProductsTest1 = new Entity("ProductsTest2");
     ProductsTest1.setProperty("id", id);
     ProductsTest1.setProperty("name", name);
     ProductsTest1.setProperty("imgUrl", imgUrl);
@@ -85,7 +85,7 @@ public class ProductServlet extends HttpServlet {
     datastore.put(ProductsTest1);*/
     
     
-    Query query = new Query("ProductsTest");
+    Query query = new Query("ProductsTest1");
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
