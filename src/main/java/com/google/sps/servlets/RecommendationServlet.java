@@ -48,6 +48,10 @@ public class RecommendationServlet extends HttpServlet {
     String username;
     String skinColor;
     long productID;
+    String type;
+    String tone;
+    String ingredients;
+    String brand;
 
     UserService userService = UserServiceFactory.getUserService();
       if (!userService.isUserLoggedIn()) {
@@ -67,9 +71,13 @@ public class RecommendationServlet extends HttpServlet {
     for (Entity entity : results.asIterable()) {
 
       productID = (long) entity.getProperty("date");
-      skinColor = (String) entity.getProperty("skinColor");      
+      skinColor = (String) entity.getProperty("skinColor");
+      type = (String) entity.getProperty("type");
+      tone = (String) entity.getProperty("tone");
+      ingredients = (String) entity.getProperty("ingredients");
+      brand = (String) entity.getProperty("brand");
 
-      if (username.equals((String) entity.getProperty("name"))) {
+      if (username.equals((String) entity.getProperty("email"))) {
         //UserInfo info = new UserInfo(skinColor, productID);    
         //userInfo.add(info);
       }
