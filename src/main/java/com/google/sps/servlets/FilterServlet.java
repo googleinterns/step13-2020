@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 @WebServlet("/filter")
-public class ProductServlet extends HttpServlet {
+public class FilterServlet extends HttpServlet {
   
   class Summary {
     private final long id;
@@ -28,9 +28,10 @@ public class ProductServlet extends HttpServlet {
     private final String tone;
     private final String ingredients;
     private final String brand;
+    private final long cost;
 
     Summary(long id, String name, String imgUrl, String type, String tone, 
-            String ingredients, String brand) {
+            String ingredients, String brand, long cost) {
       this.id = id;
       this.name = name;
       this.imgUrl = imgUrl;
@@ -38,6 +39,7 @@ public class ProductServlet extends HttpServlet {
       this.tone = tone;
       this.ingredients = ingredients;
       this.brand = brand;
+      this.cost = cost;
     }
   }
 
@@ -54,10 +56,6 @@ public class ProductServlet extends HttpServlet {
     ArrayList<Long> costs = new ArrayList<>();
 
     int count = 0;
-
-    long id;
-    String imgUrl;
-    String name;
 
     String typeFilter = request.getParameter("type");
     String toneFilter = request.getParameter("tone");
@@ -119,7 +117,7 @@ public class ProductServlet extends HttpServlet {
       }
     }
 
-    Query query = new Query("ProductsTest");
+    Query query = new Query("ProductsTest1");
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
@@ -191,7 +189,7 @@ public class ProductServlet extends HttpServlet {
       }
 
       if (count == 5) {
-        summaries.add(new Summary(id, name, imgUrl, type, tone, ingredients, 
+        summaries.add(new Summary(id, name, imgUrl, type, tone, ings, 
                       brand, cost));
       }
     }

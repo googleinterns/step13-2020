@@ -96,7 +96,7 @@ function filter() {
     price = "None";
   }
 
-  var link = "/link?brand=" + brand +
+  var link = "/filter?brand=" + brand +
   "&type=" + type +
   "&tone=" + tone +
   "&ingredients=" + ingredients +
@@ -110,14 +110,14 @@ function filter() {
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
                     "<a href=\"\">" +
-                        "<img src=\"images/foundation.jpg\" alt=\"\">" +
+                        "<img src=\"images/foundation.jpg\" alt=\"" + offer.imgUrl + "\">" +
                     "</a>" +
-                    "<span class=\"product-brand-label\">NARS Cosmetics</span>" +
+                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
-                    "<h4 class=\"title\"><a target=\"_blank\" href=\"https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB\">NARS Sheer Glow Foundation</a></h4>" +
-                    "<div class=\"price\">$21.00 <a target=\"\" href=\"\">" +
+                    "<h4 class=\"title\"><a target=\"_blank\" href=\"https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB\">" + offer.name +"</a></h4>" +
+                    "<div class=\"price\">" + offer.cost + " <a target=\"\" href=\"\">" +
                     "<span class=\"glyphicon glyphicon-heart\"></span></a></div>" +
                 "</div>" +
             "</div>" +

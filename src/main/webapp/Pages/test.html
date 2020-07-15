@@ -16,6 +16,8 @@
         </br>
         <input type="text" id="brand" placeholder="brand">
         </br>
+        <input type="text" id="cost" placeholder="cost">
+        </br>
         <button onclick="getLink()">Click Me</button>
         <a href="/product" id="sendProduct">Upload product</a>
 
@@ -27,7 +29,8 @@
           + "&type=" + document.getElementById("type").value
           + "&tone=" + document.getElementById("tone").value
           + "&ingredients=" + document.getElementById("ingredients").value
-          + "&brand=" + document.getElementById("brand").value;
+          + "&brand=" + document.getElementById("brand").value
+          + "&cost=" + document.getElementById("cost").value;
         }
         </script>
     </body>
