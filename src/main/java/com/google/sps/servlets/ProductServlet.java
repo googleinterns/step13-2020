@@ -52,6 +52,7 @@ public class ProductServlet extends HttpServlet {
 
     
     long id;
+    long cost;
     String imgUrl;
     String type;
     String tone;
@@ -61,6 +62,7 @@ public class ProductServlet extends HttpServlet {
     
     /*
     long id = Long.parseLong(request.getParameter("id"));
+    long cost = Long.parseLong(request.getParameter("cost"));
     String imgUrl = request.getParameter("imgUrl");
     String type = request.getParameter("type");
     String tone = request.getParameter("tone");
@@ -69,18 +71,20 @@ public class ProductServlet extends HttpServlet {
     String name = request.getParameter("name");
 
     //Final Entity will be UserData. This section begins to populate the database
-    Entity ProductsTest = new Entity("ProductsTest");
-    ProductsTest.setProperty("id", id);
-    ProductsTest.setProperty("name", name);
-    ProductsTest.setProperty("imgUrl", imgUrl);
-    ProductsTest.setProperty("type", type);
-    ProductsTest.setProperty("tone", tone);
-    ProductsTest.setProperty("ingredients", ingredients);
-    ProductsTest.setProperty("brand", brand);
+    Entity ProductsTest1 = new Entity("ProductsTest1");
+    ProductsTest1.setProperty("id", id);
+    ProductsTest1.setProperty("name", name);
+    ProductsTest1.setProperty("imgUrl", imgUrl);
+    ProductsTest1.setProperty("type", type);
+    ProductsTest1.setProperty("tone", tone);
+    ProductsTest1.setProperty("ingredients", ingredients);
+    ProductsTest1.setProperty("brand", brand);
+    ProductsTest1.setProperty("cost", cost);
 
     //Sends new data to the database
-    datastore.put(ProductsTest);
-    */
+    datastore.put(ProductsTest1);*/
+    
+    
     Query query = new Query("ProductsTest");
     PreparedQuery results = datastore.prepare(query);
 
@@ -92,7 +96,7 @@ public class ProductServlet extends HttpServlet {
       ingredients = (String) entity.getProperty("ingredients");
       brand = (String) entity.getProperty("brand");
       name = (String) entity.getProperty("name");
-      long cost = (long) entity.getProperty("cost");
+      cost = (long) entity.getProperty("cost");
 
       summaries.add(new Summary(id, name, imgUrl, type, tone, ingredients, brand, cost));
     }
