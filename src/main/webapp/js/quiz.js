@@ -114,7 +114,7 @@
     }
   },
   {
-    question: "If you selected warm as your perferred color family, what is you favorite warm?",
+    question: "If you selected warm as your perferred color family, what is your favorite warm?",
     answers: {
         a: "Red",
         b: "Yellow",
@@ -123,7 +123,7 @@
     }
   },
   {
-    question: "If you selected cool as your perferred color family, what is you favorite cool?",
+    question: "If you selected cool as your perferred color family, what is your favorite cool?",
     answers: {
         a: "Blue",
         b: "Green",
@@ -132,7 +132,7 @@
     }
   },
   {
-    question: "If you selected neutral as your perferred color family, what is you favorite neutral?",
+    question: "If you selected neutral as your perferred color family, what is your favorite neutral?",
     answers: {
         a: "Brown",
         b: "Black/Grey",
