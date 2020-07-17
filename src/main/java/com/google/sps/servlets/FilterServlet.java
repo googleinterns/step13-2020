@@ -20,25 +20,30 @@ import com.google.gson.Gson;
 @WebServlet("/filter")
 public class FilterServlet extends HttpServlet {
   
+  private static final int COMPARISON_LIMIT = 51;
+  private static final int NEEDED_MATCHES = 5;
+
   class Summary {
     private final long id;
     private final String name;
     private final String imgUrl;
     private final String type;
     private final String tone;
-    private final String ingredients;
+    private final String vegan;
     private final String brand;
+    private final String productUrl;
     private final long cost;
 
     Summary(long id, String name, String imgUrl, String type, String tone, 
-            String ingredients, String brand, long cost) {
+            String vegan, String brand, String productUrl, long cost) {
       this.id = id;
       this.name = name;
       this.imgUrl = imgUrl;
       this.type = type;
       this.tone = tone;
-      this.ingredients = ingredients;
+      this.vegan = vegan;
       this.brand = brand;
+      this.productUrl = productUrl;
       this.cost = cost;
     }
   }
@@ -51,7 +56,7 @@ public class FilterServlet extends HttpServlet {
     ArrayList<Summary> summaries = new ArrayList<>();
     ArrayList<String> types = new ArrayList<>();
     ArrayList<String> tones = new ArrayList<>();
-    ArrayList<String> ingredients = new ArrayList<>();
+    ArrayList<String> vegan = new ArrayList<>();
     ArrayList<String> brands = new ArrayList<>();
     ArrayList<Long> costs = new ArrayList<>();
 
@@ -59,47 +64,19 @@ public class FilterServlet extends HttpServlet {
 
     String typeFilter = request.getParameter("type");
     String toneFilter = request.getParameter("tone");
-    String ingredientFilter = request.getParameter("ingredients");
+    String veganFilter = request.getParameter("vegan");
     String brandFilter = request.getParameter("brand");
     String costFilter = request.getParameter("price");
 
+    types = parseFilters(typeFilter);
+
+    tones = parseFilters(toneFilter);
+
+    vegan = parseFilters(veganFilter);
+
+    brands = parseFilters(brandFilter);
+
     int curr = 0;
-
-    for (int i = 0; i < typeFilter.length(); i++) {
-      if (typeFilter.charAt(i) == '|') {
-        types.add(typeFilter.substring(curr, i));
-        curr = i + 1;
-      }
-    }
-
-    curr = 0;
-    
-    for (int i = 0; i < toneFilter.length(); i++) {
-      if (toneFilter.charAt(i) == '|') {
-        tones.add(toneFilter.substring(curr, i));
-        curr = i + 1;
-      }
-    }
-
-    curr = 0;
-
-    for (int i = 0; i < ingredientFilter.length(); i++) {
-      if (ingredientFilter.charAt(i) == '|') {
-        ingredients.add(ingredientFilter.substring(curr, i));
-        curr = i + 1;
-      }
-    }
-
-    curr = 0;
-
-    for (int i = 0; i < brandFilter.length(); i++) {
-      if (brandFilter.charAt(i) == '|') {
-        brands.add(brandFilter.substring(curr, i));
-        curr = i + 1;
-      }
-    }
-
-    curr = 0;
 
     if (!costFilter.equals("None")) {
       
@@ -117,7 +94,7 @@ public class FilterServlet extends HttpServlet {
       }
     }
 
-    Query query = new Query("ProductsTest1");
+    Query query = new Query("ProductsTest3");
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
@@ -127,9 +104,10 @@ public class FilterServlet extends HttpServlet {
       String imgUrl = (String) entity.getProperty("imgUrl");
       String type = (String) entity.getProperty("type");
       String tone = (String) entity.getProperty("tone");
-      String ings = (String) entity.getProperty("ingredients");
+      String vegans = (String) entity.getProperty("vegan");
       String brand = (String) entity.getProperty("brand");
       String name = (String) entity.getProperty("name");
+      String productUrl = (String) entity.getProperty("productUrl");
 
       count = 0;
 
@@ -155,9 +133,9 @@ public class FilterServlet extends HttpServlet {
         count++;
       }
 
-      if (ingredients.size() > 0) {
-        for (int i = 0; i < ingredients.size(); i++) {
-          if (ings.equals(ingredients.get(i))) {
+      if (vegan.size() > 0) {
+        for (int i = 0; i < vegan.size(); i++) {
+          if (vegans.equals(vegan.get(i))) {
             count++;
             break;
           }
@@ -179,7 +157,7 @@ public class FilterServlet extends HttpServlet {
 
       if (costs.size() > 0) {
         for (int i = 0; i < costs.size(); i++) {
-          if (cost <= costs.get(i) || (costs.get(i) == 51 && cost > 50)) {
+          if (cost <= costs.get(i) || (costs.get(i) == COMPARISON_LIMIT && cost > 50)) {
             count++;
             break;
           }
@@ -188,9 +166,9 @@ public class FilterServlet extends HttpServlet {
         count++;
       }
 
-      if (count == 5) {
-        summaries.add(new Summary(id, name, imgUrl, type, tone, ings, 
-                      brand, cost));
+      if (count == NEEDED_MATCHES) {
+        summaries.add(new Summary(id, name, imgUrl, type, tone, vegans, 
+                      brand, productUrl, cost));
       }
     }
 
@@ -198,5 +176,19 @@ public class FilterServlet extends HttpServlet {
 
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(summaries));
+  }
+
+  private ArrayList<String> parseFilters(String params) {
+    int curr = 0;
+    ArrayList<String> list = new ArrayList<>();
+
+    for (int i = 0; i < params.length(); i++) {
+      if (params.charAt(i) == '|') {
+        list.add(params.substring(curr, i));
+        curr = i + 1;
+      }
+    }
+
+    return list;
   }
 }
