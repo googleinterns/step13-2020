@@ -22,14 +22,14 @@ function getProds() {
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
                     "<a href=\"\">" +
-                        "<img src=\"images/foundation.jpg\" alt=\"\">" +
+                        "<img src=\""+ offer.imgUrl +"\" alt=\"\">" +
                     "</a>" +
-                    "<span class=\"product-brand-label\">NARS Cosmetics</span>" +
+                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
-                    "<h4 class=\"title\"><a target=\"_blank\" href=\"https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB\">NARS Sheer Glow Foundation</a></h4>" +
-                    "<div class=\"price\">$21.00 <a target=\"\" href=\"\">" +
+                    "<h4 class=\"title\"><a target=\"_blank\" href=\"https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB\">" + offer.name +"</a></h4>" +
+                    "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
                     "<span class=\"glyphicon glyphicon-heart\"></span></a></div>" +
                 "</div>" +
             "</div>" +
@@ -45,7 +45,7 @@ function filter() {
   var brand = "";
   var type = "";
   var tone = "";
-  var ingredients = "";
+  var vegan = "";
   var price = "";
 
   for (let i = 1; i <= 6; i++) {
@@ -79,13 +79,13 @@ function filter() {
   }
 
   for (let i = 1; i <= 2; i++) {
-    if(document.getElementById("i" + i).checked) {
-      ingredients += document.getElementById("i" + i).value + "|";
+    if(document.getElementById("v" + i).checked) {
+      vegan += document.getElementById("v" + i).value + "|";
     }
   }
 
-  if (ingredients.length === 0) {
-    ingredients = "None";
+  if (vegan.length === 0) {
+    vegan = "None";
   }
 
   for (let i = 1; i <= 4; i++) {
@@ -101,7 +101,7 @@ function filter() {
   var link = "/filter?brand=" + brand +
   "&type=" + type +
   "&tone=" + tone +
-  "&ingredients=" + ingredients +
+  "&vegan=" + vegan +
   "&price=" + price;
 
   fetch(link).then(response => response.json()).then((products) => {
@@ -112,14 +112,14 @@ function filter() {
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
                     "<a href=\"\">" +
-                        "<img src=\"images/foundation.jpg\" alt=\"" + offer.imgUrl + "\">" +
+                        "<img src=\""+ offer.imgUrl +"\" alt=\"\">" +
                     "</a>" +
                     "<span class=\"product-brand-label\">" + offer.name + "</span>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\"https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB\">" + offer.name +"</a></h4>" +
-                    "<div class=\"price\">" + offer.cost + " <a target=\"\" href=\"\">" +
+                    "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
                     "<span class=\"glyphicon glyphicon-heart\"></span></a></div>" +
                 "</div>" +
             "</div>" +
