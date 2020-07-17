@@ -50,8 +50,8 @@ public class ProductServlet extends HttpServlet {
     throws IOException {
     
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    ArrayList<Summary> summaries = new ArrayList<>();
-    
+    ArrayList<Summary> summaries = new ArrayList<>();    
+
     
     long id;
     long cost;
@@ -94,6 +94,7 @@ public class ProductServlet extends HttpServlet {
     //Sends new data to the database
     datastore.put(ProductsTest3);
     */
+
     Query query = new Query("ProductsTest3");
     PreparedQuery results = datastore.prepare(query);
 
