@@ -12,9 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var arrayOfProducts = Array();
+var userSelecetdAnswers = [];
 
-async function fetchDataAsync() {
-    const response = await fetch('test.html');
-    arrayOfProducts = await response.json();
+
+function processAnswers(){
+        var usersPick = userSelectedAnswers;
+        var hiddenSelectedAnswers = document.getElementById("selectedAnswers");
+        hiddenSelectedAnswers.value = usersPick.join(",");
+        var form = document.getElementById("answers");
+        form.submit();
+        console.log("done");
 }
