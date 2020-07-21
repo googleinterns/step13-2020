@@ -1,2 +1,3 @@
-com/google/sps/servlets/UserImgServlet.class
+com/google/sps/servlets/ServeImgServlet.class
+com/google/sps/servlets/UploadImgServlet.class
 com/google/sps/servlets/UserAuthServlet.class
