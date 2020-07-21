@@ -78,7 +78,6 @@ public class LikedServlet extends HttpServlet {
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-<<<<<<< HEAD
     Query query = new Query("UserDataTest1");
     PreparedQuery results = datastore.prepare(query);
 
@@ -104,12 +103,5 @@ public class LikedServlet extends HttpServlet {
 
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(status));
-=======
-    Entity UserDataTest1 = new Entity("UserDataTest1");
-    UserDataTest1.setProperty("email", username);
-    UserDataTest1.setProperty("id", id);
-
-    datastore.put(UserDataTest1);
->>>>>>> Finalized Backend for Recommendations, Photo Uploading, Nearly Finalized Backend for Quiz
   }
 }
