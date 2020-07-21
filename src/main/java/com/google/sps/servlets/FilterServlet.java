@@ -123,8 +123,8 @@ public class FilterServlet extends HttpServlet {
       }
 
       if (tones.size() > 0) {
-        for (int i = 0; i < tones.size(); i++) {
-          if (tone.equals(tones.get(i))) {
+        for (String str: tones) {
+          if (tone.equals(str)) {
             count++;
             break;
           }
@@ -134,8 +134,8 @@ public class FilterServlet extends HttpServlet {
       }
 
       if (vegan.size() > 0) {
-        for (int i = 0; i < vegan.size(); i++) {
-          if (vegans.equals(vegan.get(i))) {
+        for (String str: vegan) {
+          if (vegans.equals(str)) {
             count++;
             break;
           }
@@ -145,8 +145,8 @@ public class FilterServlet extends HttpServlet {
       }
 
       if (brands.size() > 0) {
-        for (int i = 0; i < brands.size(); i++) {
-          if (brand.equals(brands.get(i))) {
+        for (String str: brands) {
+          if (brand.equals(str)) {
             count++;
             break;
           }
@@ -156,8 +156,8 @@ public class FilterServlet extends HttpServlet {
       }
 
       if (costs.size() > 0) {
-        for (int i = 0; i < costs.size(); i++) {
-          if (cost <= costs.get(i) || (costs.get(i) == COMPARISON_LIMIT && cost > 50)) {
+        for (Long num: costs) {
+          if ((cost <= num && num != COMPARISON_LIMIT) || (num == COMPARISON_LIMIT && cost > 50)) {
             count++;
             break;
           }

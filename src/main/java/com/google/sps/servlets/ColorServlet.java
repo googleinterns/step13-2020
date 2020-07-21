@@ -39,11 +39,11 @@ public class ColorServlet extends HttpServlet {
     tone = request.getParameter("tone");
 
     //Final Entity will be UserData. This section begins to populate the database
-    Entity ColorTest1 = new Entity("ColorTest1");
-    ColorTest1.setProperty("username", username);
-    ColorTest1.setProperty("tone", tone);
+    Entity colorTest1 = new Entity("ColorTest1");
+    colorTest1.setProperty("username", username);
+    colorTest1.setProperty("tone", tone);
 
     //Sends new data to the database
-    datastore.put(ColorTest1);
+    datastore.put(colorTest1);
   }
 }

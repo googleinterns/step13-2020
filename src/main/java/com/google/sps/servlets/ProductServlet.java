@@ -52,6 +52,7 @@ public class ProductServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     ArrayList<Summary> summaries = new ArrayList<>();
     
+    
     long id;
     long cost;
     String imgUrl;
@@ -65,6 +66,7 @@ public class ProductServlet extends HttpServlet {
     /*
     long id = Long.parseLong(request.getParameter("id"));
     long cost = Long.parseLong(request.getParameter("cost"));
+    long rating = Long.parseLong(request.getParameter("rating"));
     String description = request.getParameter("description");
     String imgUrl = request.getParameter("imgUrl");
     String type = request.getParameter("type");
@@ -80,6 +82,7 @@ public class ProductServlet extends HttpServlet {
     ProductsTest3.setProperty("id", id);
     ProductsTest3.setProperty("name", name);
     ProductsTest3.setProperty("description", description);
+    ProductsTest3.setProperty("productUrl", productUrl);
     ProductsTest3.setProperty("imgUrl", imgUrl);
     ProductsTest3.setProperty("type", type);
     ProductsTest3.setProperty("tone", tone);
@@ -89,9 +92,8 @@ public class ProductServlet extends HttpServlet {
     ProductsTest3.setProperty("cost", cost);
 
     //Sends new data to the database
-    datastore.put(ProductsTest1);*/
-    
-    
+    datastore.put(ProductsTest3);
+    */
     Query query = new Query("ProductsTest3");
     PreparedQuery results = datastore.prepare(query);
 

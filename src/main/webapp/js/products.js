@@ -2,11 +2,17 @@ function loadUser() {
 
   fetch('/veri').then(response => response.json()).then((list) => {
     var login = document.getElementById("sign");
+    var like = document.getElementById("like");
+    var rec = document.getElementById("recommend");
       
     if(list.confirm === "Y") {
       login.innerHTML = "Sign-Out";
+      like.style.visibility = "visible";
+      rec.style.visibility = "visible";
     } else {
       login.innerHTML = "Sign-In";
+      like.style.visibility = "hidden";
+      rec.style.visibility = "hidden";
     }
   });
 
@@ -28,9 +34,9 @@ function getProds() {
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
-                    "<h4 class=\"title\"><a target=\"_blank\" href=\"https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB\">" + offer.name +"</a></h4>" +
+                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
                     "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
-                    "<span class=\"glyphicon glyphicon-heart\"></span></a></div>" +
+                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></a></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -118,12 +124,72 @@ function filter() {
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
-                    "<h4 class=\"title\"><a target=\"_blank\" href=\"https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB\">" + offer.name +"</a></h4>" +
+                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
                     "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
-                    "<span class=\"glyphicon glyphicon-heart\"></span></a></div>" +
+                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></a></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
     })
+  });
+}
+
+function getRecs() {
+  document.getElementById('prodGrid').innerHTML = "";
+
+  fetch("/recommend").then(response => response.json()).then((products) => {
+    const productGrid = document.getElementById('prodGrid');
+    products.forEach((offer) => {
+      productGrid.innerHTML += 
+        "<div class=\"col-md-3 col-sm-6\">" +
+            "<div class=\"product-grid\">" +
+                "<div class=\"product-image\">" +
+                    "<a href=\"\">" +
+                        "<img src=\""+ offer.imgUrl +"\" alt=\"\">" +
+                    "</a>" +
+                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
+                "</div>" +
+                "<!-- Product Content -->" +
+                "<div class=\"product-content\">" +
+                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
+                    "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
+                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></a></div>" +
+                "</div>" +
+            "</div>" +
+        "</div>";
+    })
+  });
+}
+
+function getLiked() {
+  document.getElementById('prodGrid').innerHTML = "";
+
+  fetch("/getLiked").then(response => response.json()).then((products) => {
+    const productGrid = document.getElementById('prodGrid');
+    products.forEach((offer) => {
+      productGrid.innerHTML += 
+        "<div class=\"col-md-3 col-sm-6\">" +
+            "<div class=\"product-grid\">" +
+                "<div class=\"product-image\">" +
+                    "<a href=\"\">" +
+                        "<img src=\""+ offer.imgUrl +"\" alt=\"\">" +
+                    "</a>" +
+                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
+                "</div>" +
+                "<!-- Product Content -->" +
+                "<div class=\"product-content\">" +
+                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
+                    "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
+                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></a></div>" +
+                "</div>" +
+            "</div>" +
+        "</div>";
+    })
+  });
+}
+
+function putLiked(id) {
+  fetch("/liked?id=" + id).then(response => response.json()).then((result) => {
+    console.log(result.end);
   });
 }

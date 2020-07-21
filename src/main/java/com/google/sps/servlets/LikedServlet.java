@@ -43,17 +43,33 @@ comments data */
 @WebServlet("/liked")
 public class LikedServlet extends HttpServlet {
   
+  class Status {
+    private final String end;
+
+    Status(String end) {
+      this.end = end;
+    }
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
     throws IOException {
     
     String username;
     long id = Long.parseLong(request.getParameter("id"));
+    boolean found = false;
 
     UserService userService = UserServiceFactory.getUserService();
     
     if (!userService.isUserLoggedIn()) {
       //May want to add in an error message later like "ERROR: User is not logged in"
+      Gson gson = new Gson();
+
+      Status status = new Status("Failure"); 
+
+      response.setContentType("application/json;");
+      response.getWriter().println(gson.toJson(status));
+
       return;
     }
     
@@ -62,10 +78,30 @@ public class LikedServlet extends HttpServlet {
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-    Entity UserDataTest1 = new Entity("UserDataTest1");
-    UserDataTest1.setProperty("email", username);
-    UserDataTest1.setProperty("id", id);
+    Query query = new Query("UserDataTest1");
+    PreparedQuery results = datastore.prepare(query);
 
-    datastore.put(UserDataTest1);
+    for (Entity entity : results.asIterable()) {
+      if (id == (long) entity.getProperty("id") && 
+          username.equals((String) entity.getProperty("email"))) {
+          found = true;
+          break;
+      }
+    }
+
+    if (!found) {
+      Entity userDataTest1 = new Entity("UserDataTest1");
+      userDataTest1.setProperty("email", username);
+      userDataTest1.setProperty("id", id);
+
+      datastore.put(userDataTest1);
+    }
+
+    Gson gson = new Gson();
+
+    Status status = new Status("Success");
+
+    response.setContentType("application/json;");
+    response.getWriter().println(gson.toJson(status));
   }
 }
