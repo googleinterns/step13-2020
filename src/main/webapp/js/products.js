@@ -1,5 +1,7 @@
 function loadUser() {
 
+  document.getElementById("Notification").style.visibility = "hidden";
+
   fetch('/veri').then(response => response.json()).then((list) => {
     var login = document.getElementById("sign");
     var like = document.getElementById("like");
@@ -35,8 +37,8 @@ function getProds() {
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
-                    "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
-                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></a></div>" +
+                    "<div class=\"price\">$" + offer.cost +
+                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -125,8 +127,8 @@ function filter() {
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
-                    "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
-                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></a></div>" +
+                    "<div class=\"price\">$" + offer.cost +
+                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -152,8 +154,8 @@ function getRecs() {
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
-                    "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
-                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></a></div>" +
+                    "<div class=\"price\">$" + offer.cost +
+                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -179,8 +181,9 @@ function getLiked() {
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
-                    "<div class=\"price\">$" + offer.cost + " <a target=\"\" href=\"\">" +
-                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></a></div>" +
+                    "<div class=\"price\">$" + offer.cost +
+                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></br>" +
+                    "<span class=\"glyphicon glyphicon-remove\" onclick=\"removeLike("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -190,6 +193,24 @@ function getLiked() {
 
 function putLiked(id) {
   fetch("/liked?id=" + id).then(response => response.json()).then((result) => {
-    console.log(result.end);
+    if (result.end === "Success") {
+      document.getElementById("notice").innerText = "Added!";
+      document.getElementById("Notification").style.visibility = "visible";
+      setTimeout(function() {
+        document.getElementById("Notification").style.visibility = "hidden";
+      }, 3000);
+    } else {
+      document.getElementById("notice").innerText = "Must log in";
+      document.getElementById("Notification").style.visibility = "visible";
+      setTimeout(function() {
+        document.getElementById("Notification").style.visibility = "hidden";
+      }, 3000);
+    }
+  });
+}
+
+function removeLike(id) {
+  fetch("/delete?id=" + id).then(response => response.json()).then((result) => {
+    getLiked();
   });
 }
