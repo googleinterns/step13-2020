@@ -34,6 +34,12 @@
                 <!-- Nav Items -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <button id="recommend" class="btn btn-outline-success my-2 my-sm-0" onclick="getRecs()">Recommendation</button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="like" class="btn btn-outline-success my-2 my-sm-0" onclick="getLiked()">Liked</button>
+                    </li>
+                    <li class="nav-item">
                         <a href="profile.html" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item">
@@ -94,7 +100,7 @@
                                     <li><label><input id="s6" type="checkbox" value="Dark-Tan"> Dark-Tan</label></li>
                                     <li><label><input id="s7" type="checkbox" value="Brown"> Brown</label></li>
                                     <li><label><input id="s8" type="checkbox" value="Dark"> Dark</label></li>
-                                    <h5 class="dropdown-header">Ingredients</h5>
+                                    <h5 class="dropdown-header">Vegan</h5>
                                     <li><label><input id="v1" type="checkbox" value="Vegan"> Vegan</label></li>
                                     <li><label><input id="v2" type="checkbox" value="Cruelty-Free"> Non-Vegan</label></li>
                                     <h5 class="dropdown-header">Price</h5>
@@ -273,11 +279,11 @@
         <!-- Pagination -->
         <div class="pages" style="padding-top: 50px;">
             <ul class="pagination justify-content-center" style="margin:20px 0">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <li class="page-item"><button class="page-link" href="#">Previous</button></li>
+                <li class="page-item"><button class="page-link" href="#">1</button></li>
+                <li class="page-item"><button class="page-link" href="#">2</button></li>
+                <li class="page-item"><button class="page-link" href="#">3</button></li>
+                <li class="page-item"><a class="page-link" href="/getLiked">Next</a></li>
             </ul>
         </div>
 

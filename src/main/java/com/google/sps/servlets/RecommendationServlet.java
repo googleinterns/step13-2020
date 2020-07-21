@@ -162,6 +162,32 @@ public class RecommendationServlet extends HttpServlet {
       }
     }
 
+    if (typeMap.isEmpty() || toneMap.isEmpty() || brandMap.isEmpty() || veganMap.isEmpty() || costMap.isEmpty()) {
+      query = new Query("ProductsTest3");
+      results = datastore.prepare(query);
+
+      for (Entity entity : results.asIterable()) {
+        productId = (long) entity.getProperty("id");
+        imgUrl = (String) entity.getProperty("imgUrl");
+        type = (String) entity.getProperty("type");
+        tone = (String) entity.getProperty("tone");
+        vegan = (String) entity.getProperty("vegan");
+        brand = (String) entity.getProperty("brand");
+        name = (String) entity.getProperty("name");
+        productUrl = (String) entity.getProperty("productUrl");
+        cost = (long) entity.getProperty("cost");
+
+        summaries.add(new Summary(productId, name, imgUrl, type, tone, vegan, brand, productUrl, cost));
+      }
+
+      Gson gson = new Gson();
+
+      response.setContentType("application/json;");
+      response.getWriter().println(gson.toJson(summaries));
+
+      return;
+    }
+
     query = new Query("ProductsTest3");
     results = datastore.prepare(query);
 
@@ -178,16 +204,34 @@ public class RecommendationServlet extends HttpServlet {
       productUrl = (String) entity.getProperty("productUrl");
       cost = (long) entity.getProperty("cost");
 
-      weight = typeMap.get(type) + brandMap.get(brand) + veganMap.get(vegan) + costMap.get(cost);
+      if (typeMap.get(type) != null) {
+        weight += typeMap.get(type);
+      }
+
+      if (brandMap.get(brand) != null) {
+        weight += brandMap.get(brand);
+      }
+
+      if (veganMap.get(vegan) != null) {
+        weight += veganMap.get(vegan);
+      }
 
       if (cost < 10) {
-        weight += costMap.get("Under $10");
+        if (costMap.get("Under $10") != null) {
+          weight += costMap.get("Under $10");
+        }
       } else if (cost >= 10 && cost < 35) {
-        weight += costMap.get("$10-$35");
+        if (costMap.get("$10-$35") != null) {
+          weight += costMap.get("$10-$35");
+        }
       } else if (cost >= 35 && cost < 50) {
-        weight += costMap.get("$35-$50");
+        if (costMap.get("$35-$50") != null) {
+          weight += costMap.get("$35-$50");
+        }
       } else {
-        weight += costMap.get("$50+");
+        if (costMap.get("$50+") != null) {
+          weight += costMap.get("$50+");
+        }
       }
 
       if (head == null) {
@@ -216,7 +260,7 @@ public class RecommendationServlet extends HttpServlet {
     count = 0;
     Node curr = head;
 
-    while (count < 16) {
+    while (curr != null && count < 16) {
       summaries.add(curr.summary);
       curr = curr.next;
       count++;
