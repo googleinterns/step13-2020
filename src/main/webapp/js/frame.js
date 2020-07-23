@@ -1,4 +1,3 @@
-
 document.getElementById("send").style.visibility = "hidden";
 
 var imageUpload = document.getElementById('imageUpload');
@@ -53,7 +52,6 @@ $(canvas2).on('mousedown', function(e) {
     last_mousex = parseInt(e.clientX-canvasx);
 	last_mousey = parseInt(e.clientY-canvasy);
     ctx2.clearRect(0,0,canvas2.width,canvas2.height);
-
     mousedown = true;
 });
 
