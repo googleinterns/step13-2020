@@ -18,14 +18,21 @@ function loadUser() {
     }
   });
 
-  getProds();
+  getProds(1);
 }
 
-function getProds() {
+function getProds(sets) {
   fetch('/product').then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
+    var count = 0;
+
+    if (sets === 1) {
+      productGrid.innerHTML = "";
+    }
+
     products.forEach((offer) => {
-      productGrid.innerHTML += 
+      if (count < (sets * 16) && count >= (sets * 16 - 16)) {
+        productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
@@ -42,13 +49,20 @@ function getProds() {
                 "</div>" +
             "</div>" +
         "</div>";
+      }
+
+      count++;
     })
+
+    document.getElementById("show").onclick = "getProds(" + (sets + 1) + ")";
   });
 }
 
-function filter() {
+function filter(sets) {
 
-  document.getElementById('prodGrid').innerHTML = "";
+  if (sets === 1) {
+    document.getElementById('prodGrid').innerHTML = "";
+  }
 
   var brand = "";
   var type = "";
@@ -114,8 +128,11 @@ function filter() {
 
   fetch(link).then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
+    var count = 0;
+
     products.forEach((offer) => {
-      productGrid.innerHTML += 
+      if (count < (sets * 16) && count >= (sets * 16 - 16)) {
+        productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
@@ -132,17 +149,28 @@ function filter() {
                 "</div>" +
             "</div>" +
         "</div>";
+      }
+
+      count++;
     })
+
+    document.getElementById("show").onclick = "filter(" + (sets + 1) + ")";
   });
 }
 
-function getRecs() {
-  document.getElementById('prodGrid').innerHTML = "";
+function getRecs(sets) {
+
+  if (sets === 1) {
+    document.getElementById('prodGrid').innerHTML = "";
+  }
 
   fetch("/recommend").then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
+    var count = 0;
+
     products.forEach((offer) => {
-      productGrid.innerHTML += 
+      if (count < (sets * 16) && count >= (sets * 16 - 16)) {
+        productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
@@ -159,17 +187,28 @@ function getRecs() {
                 "</div>" +
             "</div>" +
         "</div>";
+      }
+
+      count++;
     })
+
+    document.getElementById("show").onclick = "getRecs(" + (sets + 1) + ")";
   });
 }
 
-function getLiked() {
-  document.getElementById('prodGrid').innerHTML = "";
+function getLiked(sets) {
+
+  if (sets === 1) {
+    document.getElementById('prodGrid').innerHTML = "";
+  }
 
   fetch("/getLiked").then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
+    var count = 0;
+
     products.forEach((offer) => {
-      productGrid.innerHTML += 
+      if (count < (sets * 16) && count >= (sets * 16 - 16)) {
+        productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
@@ -187,7 +226,12 @@ function getLiked() {
                 "</div>" +
             "</div>" +
         "</div>";
+      }
+
+      count++;
     })
+
+    document.getElementById("show").onclick = "getLiked(" + (sets + 1) + ")";
   });
 }
 
@@ -211,6 +255,6 @@ function putLiked(id) {
 
 function removeLike(id) {
   fetch("/delete?id=" + id).then(response => response.json()).then((result) => {
-    getLiked();
+    getLiked(1);
   });
 }

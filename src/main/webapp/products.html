@@ -34,10 +34,10 @@
                 <!-- Nav Items -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <button id="recommend" class="btn btn-outline-success my-2 my-sm-0" onclick="getRecs()">Recommendation</button>
+                        <button id="recommend" class="btn btn-outline-success my-2 my-sm-0" onclick="getRecs(1)">Recommendation</button>
                     </li>
                     <li class="nav-item">
-                        <button id="like" class="btn btn-outline-success my-2 my-sm-0" onclick="getLiked()">Liked</button>
+                        <button id="like" class="btn btn-outline-success my-2 my-sm-0" onclick="getLiked(1)">Liked</button>
                     </li>
                     <li class="nav-item">
                         <a href="profile.html" class="nav-link">Profile</a>
@@ -109,7 +109,7 @@
                                     <li><label><input id="p3" type="checkbox" value="50"> $35-$50</label></li>
                                     <li><label><input id="p4" type="checkbox" value="51"> $50+</label></li>
                                 </div>
-                                <button class="btn btn-primary" style="margin-top: 10px;" onclick="filter()">Submit</button>
+                                <button class="btn btn-primary" style="margin-top: 10px;" onclick="filter(1)">Submit</button>
                             <!--
                             </form> -->
                         </ul>
@@ -120,7 +120,7 @@
 
         <div class="pages" style="padding-top: 50px;">
             <ul class="pagination justify-content-center" style="margin:20px 0">
-                <li class="page-item"><button class="page-link" onclick="getProds()">Show All</button></li>
+                <li class="page-item"><button class="page-link" onclick="getProds(1)">Show All</button></li>
             </ul>
         </div>
 
@@ -291,11 +291,7 @@
         <!-- Pagination -->
         <div class="pages" style="padding-top: 50px;">
             <ul class="pagination justify-content-center" style="margin:20px 0">
-                <li class="page-item"><button class="page-link" href="#">Previous</button></li>
-                <li class="page-item"><button class="page-link" href="#">1</button></li>
-                <li class="page-item"><button class="page-link" href="#">2</button></li>
-                <li class="page-item"><button class="page-link" href="#">3</button></li>
-                <li class="page-item"><a class="page-link" href="/getLiked">Next</a></li>
+                <li class="page-item"><button id="show" class="page-link" onclick="">Show More</button></li>
             </ul>
         </div>
 

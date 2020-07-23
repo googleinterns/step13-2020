@@ -6,12 +6,12 @@
             "width=device-width, initial-scale=1.0"> 
       
     <title> 
-        Draw with the mouse in a HTML5 canvas 
+        Face Analyzer 
     </title> 
       
     <style> 
         * { 
-            overflow: hidden; 
+            overflow: auto; 
         } 
         body { 
             text-align: center; 
@@ -25,13 +25,18 @@
 </head> 
   
 <body> 
-    <h1>GeeksforGeeks</h1> 
-    <b>Draw anything you want</b> 
+    <h1>Draw a Box On or Around Your Face to Get Your Skin Tone</h1> 
+    <b>Add as Little Hair. If Too Much Hair Is On the Face, Draw the Box Around a Region of Skin</b>
+    </br>
+    <a href="../profile.html">Return to Profile Page</a> 
     <hr>
     <canvas id="lo-canvas" width="500" height="500" style="position: absolute; left: 50%; transform: translate(-50%, 0%); border: solid 1px; z-index: 0"></canvas>
     <canvas id="hi-canvas" width="500" height="500" style="position: absolute; left: 50%; transform: translate(-50%, 0%); border: solid 1px; z-index: 1"></canvas>
-    </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+    </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
     <input type="file" id="imageUpload">
+    <p>Sample of your tone:</p><canvas id="Sample" width="20" height="20"></canvas>
+    </br>
+    <button id="send" onclick="sendColorData()">Send Color Info</button>
     <script src="../js/frame.js"></script>
 </body> 
   

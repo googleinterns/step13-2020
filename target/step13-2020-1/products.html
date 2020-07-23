@@ -34,6 +34,12 @@
                 <!-- Nav Items -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <button id="recommend" class="btn btn-outline-success my-2 my-sm-0" onclick="getRecs(1)">Recommendation</button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="like" class="btn btn-outline-success my-2 my-sm-0" onclick="getLiked(1)">Liked</button>
+                    </li>
+                    <li class="nav-item">
                         <a href="profile.html" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item">
@@ -64,25 +70,64 @@
                         </button>
                         <ul class="dropdown-menu">
                             <!-- Make HTML Checkbox Form -->
+                            <!--
                             <form action="/action.php">
+                            -->
                                 <div class="checkbox">
                                     <h5 class="dropdown-header">Brand</h5>
-                                    <li><label><input type="checkbox" value="filter"> Maybelline</label></li>
-                                    <li><label><input type="checkbox" value="filter"> L'Oreal</label></li>
-                                    <li><label><input type="checkbox" value="filter"> Smashbox</label></li>
-                                    <h5 class="dropdown-header">Ingredients</h5>
-                                    <li><label><input type="checkbox" value="filter"> Vegan</label></li>
-                                    <li><label><input type="checkbox" value="filter"> Cruelty-Free</label></li>
-                                    <li><label><input type="checkbox" value="filter"> Oil-Free</label></li>
-                                    <li><label><input type="checkbox" value="filter"> Paraben-Free</label></li>
-                                    <li><label><input type="checkbox" value="filter"> Organic</label></li>
+                                    <li><label><input id="b1" type="checkbox" value="Maybelline"> Maybelline</label></li>
+                                    <li><label><input id="b2" type="checkbox" value="L'Oreal"> L'Oreal</label></li>
+                                    <li><label><input id="b3" type="checkbox" value="Smashbox"> Smashbox</label></li>
+                                    <li><label><input id="b4" type="checkbox" value="Urban Decay"> Urban Decay</label></li>
+                                    <li><label><input id="b5" type="checkbox" value="Fenty"> Fenty</label></li>
+                                    <li><label><input id="b6" type="checkbox" value="Nyx"> Sephora</label></li>
+                                    <h5 class="dropdown-header">Type</h5>
+                                    <li><label><input id="t1" type="checkbox" value="Blush"> Blush</label></li>
+                                    <li><label><input id="t2" type="checkbox" value="Bronzer"> Bronzer</label></li>
+                                    <li><label><input id="t3" type="checkbox" value="Eyeliner"> Eyeliner</label></li>
+                                    <li><label><input id="t4" type="checkbox" value="Eyeshadow"> Eyeshadow</label></li>
+                                    <li><label><input id="t5" type="checkbox" value="Foundation"> Foundation</label></li>
+                                    <li><label><input id="t6" type="checkbox" value="Lip Liner"> Lip Liner</label></li>
+                                    <li><label><input id="t7" type="checkbox" value="Lipstick"> Lipstick</label></li>
+                                    <li><label><input id="t8" type="checkbox" value="Mascara"> Mascara</label></li>
+                                    <li><label><input id="t9" type="checkbox" value="Nail Polish"> Nail Polish</label></li>
+                                    <h5 class="dropdown-header">Skin Tone</h5>
+                                    <li><label><input id="s1" type="checkbox" value="Fair"> Fair</label></li>
+                                    <li><label><input id="s2" type="checkbox" value="Light"> Light</label></li>
+                                    <li><label><input id="s3" type="checkbox" value="Light-Tan"> Light-Tan</label></li>
+                                    <li><label><input id="s4" type="checkbox" value="Medium"> Medium</label></li>
+                                    <li><label><input id="s5" type="checkbox" value="Tan"> Tan</label></li>
+                                    <li><label><input id="s6" type="checkbox" value="Dark-Tan"> Dark-Tan</label></li>
+                                    <li><label><input id="s7" type="checkbox" value="Brown"> Brown</label></li>
+                                    <li><label><input id="s8" type="checkbox" value="Dark"> Dark</label></li>
+                                    <h5 class="dropdown-header">Vegan</h5>
+                                    <li><label><input id="v1" type="checkbox" value="Vegan"> Vegan</label></li>
+                                    <li><label><input id="v2" type="checkbox" value="Cruelty-Free"> Non-Vegan</label></li>
+                                    <h5 class="dropdown-header">Price</h5>
+                                    <li><label><input id="p1" type="checkbox" value="10">Under $10</label></li>
+                                    <li><label><input id="p2" type="checkbox" value="35"> $10-$35</label></li>
+                                    <li><label><input id="p3" type="checkbox" value="50"> $35-$50</label></li>
+                                    <li><label><input id="p4" type="checkbox" value="51"> $50+</label></li>
                                 </div>
-                                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
-                            </form>
+                                <button class="btn btn-primary" style="margin-top: 10px;" onclick="filter(1)">Submit</button>
+                            <!--
+                            </form> -->
                         </ul>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="pages" style="padding-top: 50px;">
+            <ul class="pagination justify-content-center" style="margin:20px 0">
+                <li class="page-item"><button class="page-link" onclick="getProds(1)">Show All</button></li>
+            </ul>
+        </div>
+
+        <div class="pages" id="Notification">
+            <ul class="pagination justify-content-center" style="margin:20px 0">
+                <p class="page-link" id="notice"></p>
+            </ul>
         </div>
 
         <!-- Product Grid --> 
@@ -246,11 +291,7 @@
         <!-- Pagination -->
         <div class="pages" style="padding-top: 50px;">
             <ul class="pagination justify-content-center" style="margin:20px 0">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <li class="page-item"><button id="show" class="page-link" onclick="">Show More</button></li>
             </ul>
         </div>
 
