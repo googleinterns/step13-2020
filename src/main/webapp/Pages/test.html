@@ -2,6 +2,48 @@
 <html lang="en">
     <body>
         <p><a href="/auth">Click Here</a></p>
-        <p><a href="./Pages/user.html">Test here</a></p>
+        <input type="text" id="id" placeholder="id">
+        </br>
+        <input type="text" id="name" placeholder="name">
+        </br>
+        <input type="text" id="productUrl" placeholder="productUrl">
+        </br>
+        <input type="text" id="description" placeholder="description">
+        </br>
+        <input type="text" id="imgUrl" placeholder="imgurl">
+        </br>
+        <input type="text" id="type" placeholder="type">
+        </br>
+        <input type="text" id="tone" placeholder="tone">
+        </br>
+        <input type="text" id="vegan" placeholder="vegan">
+        </br>
+        <input type="text" id="ingredients" placeholder="ingredients">
+        </br>
+        <input type="text" id="brand" placeholder="brand">
+        </br>
+        <input type="text" id="cost" placeholder="cost">
+        </br>
+        <input type="text" id="rating" placeholder="rating">
+        </br>
+        <button onclick="getLink()">Click Me</button>
+        <a href="/product" id="sendProduct">Upload product</a>
+
+        <script>
+        function getLink() {
+          document.getElementById("sendProduct").href = "/product?id=" + document.getElementById("id").value 
+          + "&imgUrl=" + document.getElementById("imgUrl").value
+          + "&name=" + document.getElementById("name").value
+          + "&type=" + document.getElementById("type").value
+          + "&tone=" + document.getElementById("tone").value
+          + "&ingredients=" + document.getElementById("ingredients").value
+          + "&brand=" + document.getElementById("brand").value
+          + "&cost=" + document.getElementById("cost").value
+          + "&vegan=" + document.getElementById("vegan").value
+          + "&productUrl=" + document.getElementById("productUrl").value
+          + "&description=" + document.getElementById("description").value
+          + "&rating=" + document.getElementById("rating").value;
+        }
+        </script>
     </body>
 </html>

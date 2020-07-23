@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Products | Style Advisor</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/products.css">
+    
+    </head>
+    <body onload="loadUser()">
+        <!-- Brand Name -->
+        <div class="jumbotron text-center" style="margin-bottom:0;">
+            <h1>Style Advisor</h1>
+        </div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light stick-top pt-3"> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-tog" data-toggle="#navbarResponsive">
+                <span class="navbar-toggler-icon" data-toggle="collapse"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-tog">
+                <!-- Search Bar -->
+                <form action="https://www.google.com" class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <!-- Nav Items -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="profile.html" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Log-Out should take the user back to the home screen & send "log-out successful" message -->
+                        <!-- href="home.html" -->
+                        <a id="sign" href="/auth" class="nav-link">Log-Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><span class="glyphicon glyphicon-heart"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--  Main Display -->
+
+        <!-- Filter Bar -->
+        <div class="container" style="margin-top:30px; margin-left: 5px;">
+            <div class="row">
+                <div class="col-6 col-md-4">
+                    <!-- Filter Dropdown -->
+                    <div id="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter By
+                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <!-- Make HTML Checkbox Form -->
+                            <form action="/action.php">
+                                <div class="checkbox">
+                                    <h5 class="dropdown-header">Brand</h5>
+                                    <li><label><input type="checkbox" value="filter"> Maybelline</label></li>
+                                    <li><label><input type="checkbox" value="filter"> L'Oreal</label></li>
+                                    <li><label><input type="checkbox" value="filter"> Smashbox</label></li>
+                                    <h5 class="dropdown-header">Ingredients</h5>
+                                    <li><label><input type="checkbox" value="filter"> Vegan</label></li>
+                                    <li><label><input type="checkbox" value="filter"> Cruelty-Free</label></li>
+                                    <li><label><input type="checkbox" value="filter"> Oil-Free</label></li>
+                                    <li><label><input type="checkbox" value="filter"> Paraben-Free</label></li>
+                                    <li><label><input type="checkbox" value="filter"> Organic</label></li>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+                            </form>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid --> 
+        <div class="container">
+            <div class="row" id="prodGrid">
+
+                <!-- Product #1
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="">
+                                <img src="images/foundation.jpg" alt="">
+                            </a>
+                            <span class="product-brand-label">NARS Cosmetics</span>
+                        </div>
+                        <!-- Product Content
+                        <div class="product-content">
+                            <h4 class="title"><a target="_blank" href="https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB">
+                                NARS Sheer Glow Foundation</a></h4>
+                            <div class="price">$21.00 <a target="" href="">
+                                <span class="glyphicon glyphicon-heart"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product #2
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="">
+                                <img src="images/foundation.jpg" alt="">
+                            </a>
+                            <span class="product-brand-label">NARS Cosmetics</span>
+                        </div>
+                        <!-- Product Content
+                        <div class="product-content">
+                            <h4 class="title"><a href="">
+                                NARS Sheer Glow Foundation</a></h4>
+                            <div class="price">$21.00 <a target="" href="">
+                                <span class="glyphicon glyphicon-heart"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product #3
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="">
+                                <img src="images/foundation.jpg" alt="">
+                            </a>
+                            <span class="product-brand-label">NARS Cosmetics</span>
+                        </div>
+                        <!-- Product Content
+                        <div class="product-content">
+                            <h4 class="title"><a href="">
+                                NARS Sheer Glow Foundation</a></h4>
+                            <div class="price">$21.00 <a target="" href="">
+                                <span class="glyphicon glyphicon-heart"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product #4
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="">
+                                <img src="images/foundation.jpg" alt="">
+                            </a>
+                            <span class="product-brand-label">NARS Cosmetics</span>
+                        </div>
+                        <!-- Product Content
+                        <div class="product-content">
+                            <h4 class="title"><a href="">
+                                NARS Sheer Glow Foundation</a></h4>
+                            <div class="price">$21.00 <a target="" href="">
+                                <span class="glyphicon glyphicon-heart"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product #5
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="">
+                                <img src="images/foundation.jpg" alt="">
+                            </a>
+                            <span class="product-brand-label">NARS Cosmetics</span>
+                        </div>
+                        <!-- Product Content
+                        <div class="product-content">
+                            <h4 class="title"><a href="">
+                                NARS Sheer Glow Foundation</a></h4>
+                            <div class="price">$21.00 <a target="" href="">
+                                <span class="glyphicon glyphicon-heart"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product #6
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="">
+                                <img src="images/foundation.jpg" alt="">
+                            </a>
+                            <span class="product-brand-label">NARS Cosmetics</span>
+                        </div>
+                        <!-- Product Content
+                        <div class="product-content">
+                            <h4 class="title"><a href="">
+                                NARS Sheer Glow Foundation</a></h4>
+                            <div class="price">$21.00 <a target="" href="">
+                                <span class="glyphicon glyphicon-heart"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product #7
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="">
+                                <img src="images/foundation.jpg" alt="">
+                            </a>
+                            <span class="product-brand-label">NARS Cosmetics</span>
+                        </div>
+                        <!-- Product Content
+                        <div class="product-content">
+                            <h4 class="title"><a href="">
+                                NARS Sheer Glow Foundation</a></h4>
+                            <div class="price">$21.00 <a target="" href="">
+                                <span class="glyphicon glyphicon-heart"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product #8
+                <div class="col-md-3 col-sm-6">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="">
+                                <img src="images/foundation.jpg" alt="">
+                            </a>
+                            <span class="product-brand-label">NARS Cosmetics</span>
+                        </div>
+                        <!-- Product Content
+                        <div class="product-content">
+                            <h4 class="title"><a href="">
+                                NARS Sheer Glow Foundation</a></h4>
+                            <div class="price">$21.00 <a target="" href="">
+                                <span class="glyphicon glyphicon-heart"></span></a></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pages" style="padding-top: 50px;">
+            <ul class="pagination justify-content-center" style="margin:20px 0">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="jumbotron text-center" style="margin-bottom:0px;"> 
+            <footer>
+                <p>Style Advisor, Copyright &copy; 2020</p>
+                <a id="back-to-top" href="#">Top</a>
+            </footer>
+        </div>
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="/js/products.js"></script>
+    </body>
+</html>

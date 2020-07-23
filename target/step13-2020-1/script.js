@@ -12,9 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 var arrayOfProducts = Array();
 
 async function fetchDataAsync() {
     const response = await fetch('test.html');
     arrayOfProducts = await response.json();
+}
+
+function filtering(){
+    var checkBox = document.getElementsBy("result");
+    if(checkBox.checked == true){
+        for(i = 0; i <  arrayOfProducts.length; i++){
+           let prodbrand = arrayOfProducts[i].brand;
+           let valName = document.getElementById("result").value;
+           if(prodBrand == valName){
+               document.write(prodName);
+           }
+        }
+    }
+} 
+async function doStuff(){
+    await fetchDataAsync();
+    filtering();
 }
