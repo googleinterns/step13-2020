@@ -9,6 +9,8 @@ function loadUser() {
       getRecs();
       getColors();
     } else {
+      document.getElementById("photoLink").style.visibility = "hidden";
+
       getProds();
 
       var canvas = document.getElementById("Sample");
