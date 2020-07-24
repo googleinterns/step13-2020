@@ -9,7 +9,6 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import java.io.IOException;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -59,7 +58,7 @@ public class UserAuthServlet extends HttpServlet {
       "margin-bottom: 8rem; } }" +
       "</style></head><body>" +
       "<ul><li><a class=\"active\" href=" +
-      "\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">Home</a></li></ul>" +
+      "\"index.html\">Home</a></li></ul>" +
       "<header class=\"masthead\"><div class \"topper\">" +
       "<div class=\"masthead-heading\"><a href=\"" + logoutUrl + "\">LOG-OUT HERE" +
       "</a></div></div></header></body>"
@@ -98,7 +97,7 @@ public class UserAuthServlet extends HttpServlet {
       "margin-bottom: 8rem; } }" +
       "</style></head><body>" +
       "<ul><li><a class=\"active\" href=" +
-      "\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">Home</a></li></ul>" +
+      "\"index.html\">Home</a></li></ul>" +
       "<header class=\"masthead\"><div class \"topper\">" +
       "<div class=\"masthead-heading\"><a href=\"" + loginUrl + "\">LOGIN HERE" +
       "</a></div></div></header></body>"

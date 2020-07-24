@@ -4,14 +4,14 @@
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0"> 
     <meta http-equiv="X-UA-Compatible" content = "ie=edge">
-    <title>Style Advisor | Home</title>
-    <link rel = "stylesheet" href="style.css">
+    <title>Home | Style Advisor</title>
+    <link rel = "stylesheet" href="css/home.css">
 </head>
-<body>
+<body onload="loadUser()">
     <!-- Sign-In Button -->
     <div id="sign-in">
         <!-- <a href="" class="button">Sign-In</a> -->
-        <button type="button">Sign-In</button>
+        <button id="sign" type="button" onclick="location.href='/auth'"></button>
     </div>
 
     <div id="content">
@@ -28,5 +28,7 @@
             <a href="quiz.html" id="one"><button type="button">Take Quiz</button>
         </div>
     </div>
+
+    <script src="/js/home.js"></script>
 </body>
 </html>
