@@ -1,35 +1,258 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Spartan:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Monteserrat:400,800');
+ 
 .product-grid{
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
     color: black;
 }
-
+ 
 .product-grid .product-image{
     overflow: hidden;
     position: relative;
 }
 .product-grid .product-image:before{
     content: "";
-    background: rgba(0,0,0,0.3);
     width: 100%;
     height: 100%;
     opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
     transition: all 0.4s ease-out 0s;
 }
-
+ 
 .product-grid:hover .product-image:before{
     opacity: 1;
 }
-
-.product-grid .product-image a{
-    display: block;
-}
-
+ 
 .product-grid .product-image img{
     width: 100%;
     height: auto;
+}
+ 
+.product-image{
+    z-index: 1;
+}
+ 
+.quickview{
+    visibility: hidden;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    color: white;
+    border: none;
+    line-height: 0.3;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: black;
+    transition: opacity 0.2s ease 0s;
+    z-index: 2;
+}
+ 
+.product-image:hover .quickview{
+    visibility: visible;
+    cursor: pointer;
+}
+ 
+/* Hover Heart Button */
+.heart-btn{
+    display: none;
+    color: lightgrey;
+    right: 0;
+    top: 0;
+    transition: opacity 0.15s ease 0s;
+    position: absolute;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+ 
+.product-image:hover .heart-btn{
+    display: inline-block;
+    cursor: pointer;
+}
+ 
+/* Product Details Popup */
+#pd-container{
+    display: none;
+    background-color: white;
+    position: fixed;
+    color: black;
+    z-index: 1999999;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    box-shadow: 5px 10px 18px #888888;
+    max-width: 70%;
+    max-height: 500px;
+}
+ 
+/* Product Image Container */
+.img-container{
+    width: 40%;
+    background: white;
+    align-items: center;
+}
+ 
+.product-img{
+    margin-top: 70px;
+    margin-right: auto;
+    margin-left: auto;
+}
+ 
+.product-pic{
+    width: 300px;
+    margin-top: 15px;
+    height: auto;
+    /* centers image */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+/* Video */
+ 
+video{
+    /* overflow: hidden; */
+    object-fit: fill;
+}
+ 
+.video-slider{
+    width: 350px;
+    height: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    
+}
+ 
+.sample{
+    width: 80px;
+}
+ 
+.sample:hover{
+    border: 4px solid rgb(19, 192, 183);
+    outline: 0px solid; 
+    padding: 3px;
+    background-color: transparent;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+}
+ 
+/* Product Details Container*/
+.product-details{
+    width: 500px;
+    height: 450px;
+    padding: 5px;
+    background-color: white;
+    z-index: 1999999;
+}
+ 
+.product-title{
+    font-family: 'Quicksand';
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+ 
+/* Heart Button */
+.fa-heart{
+    color: lightgrey;
+}
+ 
+.fa-heart:hover{
+    cursor: pointer;
+    color: red;
+    opacity: 0.6;
+}
+ 
+#my_heart .fa-heart:hover{
+    color: red;
+    cursor: pointer;
+    opacity: 0.6;
+}
+ 
+.brand-name{
+    font-family: 'Quicksand';
+    font-size: 15px;
+}
+ 
+/* Price */
+.price{
+    margin-top: 20px;
+}
+ 
+/* Star Ratings */
+ 
+.star-container{
+    display: inline-flex;
+}
+ 
+/* View Tabs */
+ 
+#main_div{
+    height: 230px;
+    overflow: scroll;
+}
+ 
+div[id*="content"] { 
+  display:none;
+}
+ 
+.btn-container{
+    display: flex;
+}
+ 
+.my_button{
+    background-color: transparent; 
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    text-align: center;
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    opacity: 1;
+}
+.my_button:hover{
+    opacity: 0.6;
+    cursor: pointer;
+    text-decoration: underline;
+}
+ 
+.tab-list{
+    display: flex;
+}
+ 
+/* Close Button */
+#close-btn{
+    background-color: transparent;
+    border: none;
+    border-radius: 2px;
+    transition: 0.3s;
+    opacity: 1;
+    width: 35px;
+    height: auto;
+    float: right;
+    position: relative;
+    font-size: 24px;
+    font-weight: bold;
+    color: #888888;
+}
+ 
+#close-btn:hover{
+    opacity: 0.4;
+    cursor: pointer;
 }
