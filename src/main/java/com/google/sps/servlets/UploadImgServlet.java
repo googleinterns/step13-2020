@@ -65,6 +65,8 @@ import com.google.cloud.vision.v1.DominantColorsAnnotation;
 
 import com.google.protobuf.ByteString;
 
+//import com.google.auth.oauth2.GoogleCredentials;
+
 /**
  * This class has two primary functions. The first function is to convert
  * image files into a binary string that can be stored in a database for
@@ -95,17 +97,49 @@ public class UploadImgServlet extends HttpServlet {
       int count = 0;
       boolean found = false;
 
+      //String username;
+
+      /*
+      // For starting user verification. Do not uncomment until ready
+      // UserService userService = UserServiceFactory.getUserService();
+      if (blobKeys == null || blobKeys.isEmpty() || !userService.isUserLoggedIn()) {
+        res.sendRedirect("/");
+      }
+      */
+
       //Checks if a binary string could be made. Must add something to check for only img files
       if (blobKeys == null || blobKeys.isEmpty()) {
         res.sendRedirect("/");
       }
       else {
+
+        //username = userService.getCurrentUser().getEmail();
+
         //NOTE: This is for testing only. The real database will use the username as the identifier
         Query query = new Query("ImageTest3");
 
         // Get API's to make a query to the database
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         PreparedQuery results = datastore.prepare(query);
+
+        /*
+        for (Entity entity : results.asIterable()) {
+
+          if (username.equals((String) entity.getProperty("username"))) {
+            found = true;
+            break;
+          }
+        }
+
+        //Img property detection code goes here
+
+        if (found) {
+          //Change properties of matching entity with the qualities of the new image
+        }
+        else {
+          //Make entirely new database entry. Some of the testing code goes here
+        }
+        */
 
         // This loop searches for database entries with the same id. In the final version,
         // it would be by username
@@ -128,10 +162,11 @@ public class UploadImgServlet extends HttpServlet {
         imgTest.setProperty("id", id);
 
         // Yields an array of bytes representing an image so that operation can be performed.
-        byte[] blobBytes = getBlobBytes(blobKeys.get(0));
+        //byte[] blobBytes = getBlobBytes(blobKeys.get(0));
         
         // Yields labels for object identification. Final version will need face detection
-        List<EntityAnnotation> imageLabels = getImageLabels(blobBytes);
+        //List<EntityAnnotation> imageLabels = getImageLabels(blobBytes);
+        //authImplicit();
 
         // This is used for getting image properties. Will have to make it like the labels tutorial
         // detectProperties(blobBytes);
@@ -253,4 +288,18 @@ public class UploadImgServlet extends HttpServlet {
       }
     }
   }
+
+  /*
+  static void authImplicit() {
+    // If you don't specify credentials when constructing the client, the client library will
+    // look for credentials via the environment variable GOOGLE_APPLICATION_CREDENTIALS.
+    Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    System.out.println("Buckets:");
+    Page<Bucket> buckets = storage.list();
+    for (Bucket bucket : buckets.iterateAll()) {
+      System.out.println(bucket.toString());
+    }
+  }
+  */
 }
