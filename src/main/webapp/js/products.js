@@ -5,17 +5,20 @@ function loadUser() {
     var like = document.getElementById("like");
     var rec = document.getElementById("recommend");
     var profile = document.getElementById("profile");
+    var quiz = document.getElementById("quiz");
       
     if(list.confirm === "Y") {
       login.innerHTML = "Sign-Out";
       like.style.visibility = "visible";
       rec.style.visibility = "visible";
       profile.style.visibility = "visible";
+      quiz.style.visibility = "visible";
     } else {
       login.innerHTML = "Sign-In";
       like.style.visibility = "hidden";
       rec.style.visibility = "hidden";
       profile.style.visibility = "hidden";
+      quiz.style.visibility = "hidden";
     }
   });
 

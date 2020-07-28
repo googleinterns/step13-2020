@@ -65,25 +65,6 @@ public class ProductServlet extends HttpServlet {
     String productUrl;
     String description;
 
-    //Final Entity will be UserData. This section begins to populate the database
-    Entity ProductsTest3 = new Entity("ProductsTest3");
-    ProductsTest3.setProperty("id", id);
-    ProductsTest3.setProperty("name", name);
-    ProductsTest3.setProperty("description", description);
-    ProductsTest3.setProperty("productUrl", productUrl);
-    ProductsTest3.setProperty("imgUrl", imgUrl);
-    ProductsTest3.setProperty("type", type);
-    ProductsTest3.setProperty("tone", tone);
-    ProductsTest3.setProperty("vegan", vegan);
-    ProductsTest3.setProperty("ingredients", ingredients);
-    ProductsTest3.setProperty("brand", brand);
-    ProductsTest3.setProperty("cost", cost);
-
-    //Sends new data to the database
-    datastore.put(ProductsTest3);
-
-
-
     Query query = new Query("ProductsTest3");
     PreparedQuery results = datastore.prepare(query);
 

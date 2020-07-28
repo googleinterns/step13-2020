@@ -158,8 +158,10 @@ public class FilterServlet extends HttpServlet {
       if (costs.size() > 0) {
         for (Long num: costs) {
           if ((cost <= num && num != COMPARISON_LIMIT) || (num == COMPARISON_LIMIT && cost > 50)) {
-            count++;
-            break;
+            if ((num == 50 && cost >= 35) || num != 50) {
+              count++;
+              break;
+            }
           }
         }
       } else {
