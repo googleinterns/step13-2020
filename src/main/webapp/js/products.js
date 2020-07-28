@@ -160,7 +160,6 @@ function filter(sets) {
 }
 
 function getRecs() {
-
   document.getElementById('prodGrid').innerHTML = "";
   
 
@@ -169,7 +168,6 @@ function getRecs() {
     var count = 0;
 
     products.forEach((offer) => {
-
       productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +

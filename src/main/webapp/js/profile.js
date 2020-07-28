@@ -10,7 +10,6 @@ function loadUser() {
       getColors();
     } else {
       document.getElementById("photoLink").style.visibility = "hidden";
-
       getProds();
 
       var canvas = document.getElementById("Sample");
@@ -32,8 +31,7 @@ function getRecs() {
     const productGrid = document.getElementById('prodGrid');
     var count = 0;
     products.forEach((offer) => {
-      if (count < 16) {
-        
+      if (count < 16) {      
         var str = offer.name;
 
         if (str.length > 7) {

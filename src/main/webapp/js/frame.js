@@ -41,7 +41,6 @@ function sketch() {
   ctx1.clearRect(0,0, canvas1.width, canvas1.height);
 
   if (this.height > 500 || this.width > 500) {
-
     var height = this.height;
     var width = this.width;
 
