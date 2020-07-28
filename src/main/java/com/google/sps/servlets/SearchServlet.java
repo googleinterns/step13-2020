@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
-@WebServlet("/product")
-public class ProductServlet extends HttpServlet {
+@WebServlet("/search")
+public class SearchServlet extends HttpServlet {
   
   class Summary {
     private final long id;
@@ -30,10 +30,9 @@ public class ProductServlet extends HttpServlet {
     private final String brand;
     private final String productUrl;
     private final long cost;
-    private final String description;
 
     Summary(long id, String name, String imgUrl, String type, String tone, 
-            String vegan, String brand, String productUrl, long cost, String description) {
+            String vegan, String brand, String productUrl, long cost) {
       this.id = id;
       this.name = name;
       this.imgUrl = imgUrl;
@@ -43,7 +42,6 @@ public class ProductServlet extends HttpServlet {
       this.brand = brand;
       this.productUrl = productUrl;
       this.cost = cost;
-      this.description = description;
     }
   }
 
@@ -54,6 +52,9 @@ public class ProductServlet extends HttpServlet {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     ArrayList<Summary> summaries = new ArrayList<>();
       
+    String search = request.getParameter("term");
+    search = search.toLowerCase();
+
     long id;
     long cost;
     String imgUrl;
@@ -64,11 +65,14 @@ public class ProductServlet extends HttpServlet {
     String name;
     String productUrl;
     String description;
+    String ings;
+    int loops = 0;
 
     Query query = new Query("ProductsTest3");
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
+
       id = (long) entity.getProperty("id");
       imgUrl = (String) entity.getProperty("imgUrl");
       type = (String) entity.getProperty("type");
@@ -79,8 +83,48 @@ public class ProductServlet extends HttpServlet {
       productUrl = (String) entity.getProperty("productUrl");
       cost = (long) entity.getProperty("cost");
       description = (String) entity.getProperty("description");
+      ings = (String) entity.getProperty("ingredients");
 
-      summaries.add(new Summary(id, name, imgUrl, type, tone, vegan, brand, productUrl, cost, description));
+      if (description != null) {
+        loops = description.length() - search.length();
+      }
+
+      boolean found = false;
+
+      if (description != null) {
+        for (int i = 0; i <= loops; i++) {
+          if (search.equals(description.substring(i, search.length() + i).toLowerCase())) {
+            found = true;
+            break;
+          }
+        }
+      }
+      
+      if (!found) {
+        loops = name.length() - search.length();
+
+        for (int i = 0; i <= loops; i++) {
+          if (search.equals(name.substring(i, search.length() + i).toLowerCase())) {
+            found = true;
+            break;
+          }
+        }
+      }
+
+      if (!found) {
+        loops = ings.length() - search.length();
+
+        for (int i = 0; i <= loops; i++) {
+          if (search.equals(ings.substring(i, search.length() + i).toLowerCase())) {
+            found = true;
+            break;
+          }
+        }
+      }
+
+      if (found) {
+        summaries.add(new Summary(id, name, imgUrl, type, tone, vegan, brand, productUrl, cost));
+      }
     }
 
     Gson gson = new Gson();

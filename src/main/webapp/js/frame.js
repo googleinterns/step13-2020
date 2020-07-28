@@ -41,7 +41,19 @@ function sketch() {
   ctx1.clearRect(0,0, canvas1.width, canvas1.height);
 
   if (this.height > 500 || this.width > 500) {
-    ctx1.drawImage(this, 0, 0, this.width, this.height, 0, 0, 500, 500);
+
+    var height = this.height;
+    var width = this.width;
+
+    while (height > 500 && width > 500) {
+      height = 0.8 * height;
+      width = 0.8 * width;
+    }
+
+    height = Math.round(height);
+    width = Math.round(width);
+
+    ctx1.drawImage(this, 0, 0, width, height);
   } else {
     ctx1.drawImage(this, 0, 0, this.width, this.height);
   }
@@ -49,9 +61,9 @@ function sketch() {
 
 //Mousedown
 $(canvas2).on('mousedown', function(e) {
+    ctx2.clearRect(0,0,canvas2.width,canvas2.height);
     last_mousex = parseInt(e.clientX-canvasx);
 	last_mousey = parseInt(e.clientY-canvasy);
-    ctx2.clearRect(0,0,canvas2.width,canvas2.height);
     mousedown = true;
 });
 
@@ -163,5 +175,6 @@ function sendColorData() {
 
   fetch(link).then(response => response.json()).then((result) => {
     console.log(result.end);
+    location.replace("../profile.html");
   });
 }
