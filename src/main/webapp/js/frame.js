@@ -164,4 +164,5 @@ function sendColorData() {
   fetch(link).then(response => response.json()).then((result) => {
     console.log(result.end);
   });
+  alert("Color Information Recieved!");
 }
