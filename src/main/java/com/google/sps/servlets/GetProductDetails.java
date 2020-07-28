@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
-@WebServlet("/product")
-public class ProductServlet extends HttpServlet {
+@WebServlet("/details")
+public class GetProductDetails extends HttpServlet {
   
   class Summary {
     private final long id;
@@ -31,9 +31,10 @@ public class ProductServlet extends HttpServlet {
     private final String productUrl;
     private final long cost;
     private final String description;
+    private final String ings;
 
     Summary(long id, String name, String imgUrl, String type, String tone, 
-            String vegan, String brand, String productUrl, long cost, String description) {
+            String vegan, String brand, String productUrl, long cost, String description, String ings) {
       this.id = id;
       this.name = name;
       this.imgUrl = imgUrl;
@@ -44,6 +45,7 @@ public class ProductServlet extends HttpServlet {
       this.productUrl = productUrl;
       this.cost = cost;
       this.description = description;
+      this.ings = ings;
     }
   }
 
@@ -52,11 +54,10 @@ public class ProductServlet extends HttpServlet {
     throws IOException {
     
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    ArrayList<Summary> summaries = new ArrayList<>();    
+    Summary summary = null;
+      
+    long id = Long.parseLong(request.getParameter("id"));
 
-    
-    
-    long id;
     long cost;
     String imgUrl;
     String type;
@@ -66,48 +67,33 @@ public class ProductServlet extends HttpServlet {
     String name;
     String productUrl;
     String description;
-
-    //Final Entity will be UserData. This section begins to populate the database
-    Entity ProductsTest3 = new Entity("ProductsTest3");
-    ProductsTest3.setProperty("id", id);
-    ProductsTest3.setProperty("name", name);
-    ProductsTest3.setProperty("description", description);
-    ProductsTest3.setProperty("productUrl", productUrl);
-    ProductsTest3.setProperty("imgUrl", imgUrl);
-    ProductsTest3.setProperty("type", type);
-    ProductsTest3.setProperty("tone", tone);
-    ProductsTest3.setProperty("vegan", vegan);
-    ProductsTest3.setProperty("ingredients", ingredients);
-    ProductsTest3.setProperty("brand", brand);
-    ProductsTest3.setProperty("cost", cost);
-
-    //Sends new data to the database
-    datastore.put(ProductsTest3);
-    */
-
+    String ings;
 
     Query query = new Query("ProductsTest3");
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      id = (long) entity.getProperty("id");
-      imgUrl = (String) entity.getProperty("imgUrl");
-      type = (String) entity.getProperty("type");
-      tone = (String) entity.getProperty("tone");
-      vegan = (String) entity.getProperty("vegan");
-      brand = (String) entity.getProperty("brand");
-      name = (String) entity.getProperty("name");
-      productUrl = (String) entity.getProperty("productUrl");
-      cost = (long) entity.getProperty("cost");
-      description = (String) entity.getProperty("description");
+      if ( id == (long) entity.getProperty("id")) {
+        imgUrl = (String) entity.getProperty("imgUrl");
+        type = (String) entity.getProperty("type");
+        tone = (String) entity.getProperty("tone");
+        vegan = (String) entity.getProperty("vegan");
+        brand = (String) entity.getProperty("brand");
+        name = (String) entity.getProperty("name");
+        productUrl = (String) entity.getProperty("productUrl");
+        cost = (long) entity.getProperty("cost");
+        description = (String) entity.getProperty("description");
+        ings = (String) entity.getProperty("ingredients");
 
-      summaries.add(new Summary(id, name, imgUrl, type, tone, vegan, brand, productUrl, cost, description));
+        summary = new Summary(id, name, imgUrl, type, tone, vegan, brand, productUrl, cost, description, ings);
+        break;
+      }
     }
 
     Gson gson = new Gson();
 
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(summaries));
+    response.getWriter().println(gson.toJson(summary));
     
   }
 }

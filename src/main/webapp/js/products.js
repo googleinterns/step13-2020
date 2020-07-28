@@ -1,20 +1,21 @@
 function loadUser() {
 
-  document.getElementById("Notification").style.visibility = "hidden";
-
   fetch('/veri').then(response => response.json()).then((list) => {
     var login = document.getElementById("sign");
     var like = document.getElementById("like");
     var rec = document.getElementById("recommend");
+    var profile = document.getElementById("profile");
       
     if(list.confirm === "Y") {
       login.innerHTML = "Sign-Out";
       like.style.visibility = "visible";
       rec.style.visibility = "visible";
+      profile.style.visibility = "visible";
     } else {
       login.innerHTML = "Sign-In";
       like.style.visibility = "hidden";
       rec.style.visibility = "hidden";
+      profile.style.visibility = "hidden";
     }
   });
 
@@ -25,27 +26,27 @@ function getProds(sets) {
   fetch('/product').then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
     var count = 0;
-
+    
     if (sets === 1) {
       productGrid.innerHTML = "";
     }
 
     products.forEach((offer) => {
       if (count < (sets * 16) && count >= (sets * 16 - 16)) {
+
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
-                    "<a href=\"\">" +
-                        "<img src=\""+ offer.imgUrl +"\" alt=\"\">" +
-                    "</a>" +
+                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='user.jpg'\" width=\"300\">" +
+                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
                     "<span class=\"product-brand-label\">" + offer.name + "</span>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
                     "<div class=\"price\">$" + offer.cost +
-                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
+                    "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -132,20 +133,20 @@ function filter(sets) {
 
     products.forEach((offer) => {
       if (count < (sets * 16) && count >= (sets * 16 - 16)) {
+
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
-                    "<a href=\"\">" +
-                        "<img src=\""+ offer.imgUrl +"\" alt=\"\">" +
-                    "</a>" +
+                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='user.jpg'\" width=\"300\">" +
+                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
                     "<span class=\"product-brand-label\">" + offer.name + "</span>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
                     "<div class=\"price\">$" + offer.cost +
-                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
+                    "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -158,41 +159,36 @@ function filter(sets) {
   });
 }
 
-function getRecs(sets) {
+function getRecs() {
 
-  if (sets === 1) {
-    document.getElementById('prodGrid').innerHTML = "";
-  }
+  document.getElementById('prodGrid').innerHTML = "";
+  
 
   fetch("/recommend").then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
     var count = 0;
 
     products.forEach((offer) => {
-      if (count < (sets * 16) && count >= (sets * 16 - 16)) {
-        productGrid.innerHTML += 
+
+      productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
-                    "<a href=\"\">" +
-                        "<img src=\""+ offer.imgUrl +"\" alt=\"\">" +
-                    "</a>" +
+                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='user.jpg'\" width=\"300\">" +
+                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
                     "<span class=\"product-brand-label\">" + offer.name + "</span>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
                     "<div class=\"price\">$" + offer.cost +
-                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
+                    "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
-      }
-
-      count++;
     })
 
-    document.getElementById("show").onclick = "getRecs(" + (sets + 1) + ")";
+    document.getElementById("show").onclick = "getRecs()";
   });
 }
 
@@ -208,20 +204,19 @@ function getLiked(sets) {
 
     products.forEach((offer) => {
       if (count < (sets * 16) && count >= (sets * 16 - 16)) {
+
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\">" +
-                    "<a href=\"\">" +
-                        "<img src=\""+ offer.imgUrl +"\" alt=\"\">" +
-                    "</a>" +
+                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='user.jpg'\" width=\"300\">" +
+                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
                     "<span class=\"product-brand-label\">" + offer.name + "</span>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
                     "<div class=\"price\">$" + offer.cost +
-                    "<span class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></br>" +
                     "<span class=\"glyphicon glyphicon-remove\" onclick=\"removeLike("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
@@ -238,17 +233,9 @@ function getLiked(sets) {
 function putLiked(id) {
   fetch("/liked?id=" + id).then(response => response.json()).then((result) => {
     if (result.end === "Success") {
-      document.getElementById("notice").innerText = "Added!";
-      document.getElementById("Notification").style.visibility = "visible";
-      setTimeout(function() {
-        document.getElementById("Notification").style.visibility = "hidden";
-      }, 3000);
+      document.getElementById("l" + id).style.color = "red";
     } else {
-      document.getElementById("notice").innerText = "Must log in";
-      document.getElementById("Notification").style.visibility = "visible";
-      setTimeout(function() {
-        document.getElementById("Notification").style.visibility = "hidden";
-      }, 3000);
+      alert("Please log in");
     }
   });
 }
@@ -256,5 +243,63 @@ function putLiked(id) {
 function removeLike(id) {
   fetch("/delete?id=" + id).then(response => response.json()).then((result) => {
     getLiked(1);
+  });
+}
+
+function search() {
+  var term = document.getElementById("search").value;
+
+  if (term.length === 0) {
+    getProds(1);
+  } else {
+    fetch("/search?term=" + term).then(response => response.json()).then((products) => {
+      const productGrid = document.getElementById('prodGrid');
+      productGrid.innerHTML = "";
+
+      products.forEach((offer) => {
+        
+        productGrid.innerHTML += 
+        "<div class=\"col-md-3 col-sm-6\">" +
+            "<div class=\"product-grid\">" +
+                "<div class=\"product-image\">" +
+                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='user.jpg'\" width=\"300\">" +
+                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
+                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
+                "</div>" +
+                "<!-- Product Content -->" +
+                "<div class=\"product-content\">" +
+                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
+                    "<div class=\"price\">$" + offer.cost +
+                    "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
+                "</div>" +
+            "</div>" +
+        "</div>";
+      })      
+    });
+  }
+}
+
+function getDetails(id) {
+
+  fetch("/details?id=" + id).then(response => response.json()).then((products) => {
+
+    document.getElementById("main_div").innerHTML = 
+      "<h3>Description</h3>" +
+      "<p id=\"putDefault\"> <!-- Or should putDesc be placed here? -->" +
+        "DESCRIPTION GOES HERE" +
+      "</p>";
+
+    if (products.description === null) {
+      document.getElementById("putDefault").innerText = "No Description Available";
+    } else {
+      document.getElementById("putDefault").innerText = products.description;
+    }
+
+    document.getElementById("putDesc").innerText = products.description;
+    document.getElementById("putIngs").innerText = products.ings;
+    document.getElementById("brandInfo").innerText = products.brand;
+    document.getElementById("nameDesc").innerText = products.name;
+
+    showDetails();
   });
 }

@@ -33,11 +33,19 @@ function getRecs() {
     var count = 0;
     products.forEach((offer) => {
       if (count < 16) {
+        
+        var str = offer.name;
+
+        if (str.length > 7) {
+          str = str.substring(0, 8);
+          str += "..."
+        }
+        
         productGrid.innerHTML += 
           "<div class=\"col-md-auto product\">" +
             "<a href=\""+ offer.productUrl +"\">" +
-            "<img src=\"" + offer.imgUrl + "\"></a>" +
-            "<h5>" + offer.name +"</h5>" +
+            "<img src=\"" + offer.imgUrl + "\" onerror=\"this.onerror=null; this.src='user.jpg'\"></a>" +
+            "<h5>" + str +"</h5>" +
         "</div>"
       }
 

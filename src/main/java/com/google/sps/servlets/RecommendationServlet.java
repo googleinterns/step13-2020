@@ -125,6 +125,18 @@ public class RecommendationServlet extends HttpServlet {
       }
     }
 
+    query = new Query("Quiz");
+    results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      if (username.equals((String) entity.getProperty("email"))) {
+        processMap(toneMap, (String) entity.getProperty("tone1"));
+        processMap(toneMap, (String) entity.getProperty("tone2"));
+        processMap(typeMap, (String) entity.getProperty("prod1"));
+        processMap(typeMap, (String) entity.getProperty("prod2"));
+      }
+    }
+
     query = new Query("UserDataTest1");
     results = datastore.prepare(query);
 
@@ -270,15 +282,6 @@ public class RecommendationServlet extends HttpServlet {
 
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(summaries));
-
-    /*
-    query = new Query("QuizTest1");
-    PreparedQuery results = datastore.prepare(query);
-
-    for (Entity entity : results.asIterable()) {
-      
-    }
-    */
   }
 
   private void processMap(HashMap<String, Integer> map, String key) {
