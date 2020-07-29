@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <body>
-        <p><a href="/auth">Click Here</a></p>
+        <p><a href="/product">View JSON</a></p>
         <input type="text" id="id" placeholder="id">
         </br>
         <input type="text" id="name" placeholder="name">
@@ -24,14 +24,15 @@
         </br>
         <input type="text" id="cost" placeholder="cost">
         </br>
+        <!--
         <input type="text" id="rating" placeholder="rating">
-        </br>
+        </br>-->
         <button onclick="getLink()">Click Me</button>
-        <a href="/product" id="sendProduct">Upload product</a>
+        <a href="/add" id="sendProduct">Upload product</a>
 
         <script>
         function getLink() {
-          document.getElementById("sendProduct").href = "/product?id=" + document.getElementById("id").value 
+          document.getElementById("sendProduct").href = "/add?id=" + document.getElementById("id").value 
           + "&imgUrl=" + document.getElementById("imgUrl").value
           + "&name=" + document.getElementById("name").value
           + "&type=" + document.getElementById("type").value
@@ -41,8 +42,8 @@
           + "&cost=" + document.getElementById("cost").value
           + "&vegan=" + document.getElementById("vegan").value
           + "&productUrl=" + document.getElementById("productUrl").value
-          + "&description=" + document.getElementById("description").value
-          + "&rating=" + document.getElementById("rating").value;
+          + "&description=" + document.getElementById("description").value;
+          //+ "&rating=" + document.getElementById("rating").value + "";
         }
         </script>
     </body>

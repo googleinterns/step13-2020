@@ -55,7 +55,6 @@ public class ColorServlet extends HttpServlet {
         {212.67, 12.01, 180.00, 11.53, 159.67, 12.10}
     };
 
-
     UserService userService = UserServiceFactory.getUserService();
 
     if (!userService.isUserLoggedIn()) {

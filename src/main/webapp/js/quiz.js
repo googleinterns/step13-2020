@@ -97,20 +97,36 @@ var userSelecteddAnswers = [];
 
 //   stores answer values for each question into array
   var arr = [];
-  var position = 1;
 
   function collectValues() {
-    var num = 4;
-    if (position = 1) {
+    
+    var position = 1;
+    var allChecked;
+
+    while (position <= 9) {
+      allChecked = false;
+      var num = 4;
+      
+      if (position === 1) {
     	num = 8;
-    }
-    for (let i = 1; i <= num; i += 1) {
+      }
+
+      for (let i = 1; i <= num; i += 1) {
         if (document.getElementById("q" + position + "c" + i).checked) {
-            arr[position - 1] = document.getElementById("q" + position + "c" + i).value;
-            break;
+          arr[position - 1] = document.getElementById("q" + position + "c" + i).value;
+          allChecked = true;
+          break;
         }
+      }
+      
+      if (!allChecked) {
+        return false;
+      }
+
+      position++;
     }
-    position++;
+
+    return true;
   }
 
   const quizContainer = document.getElementById('quiz');
@@ -175,7 +191,7 @@ var userSelecteddAnswers = [];
     answers: {
         q4c1: "images/quiz/lipstick.jpg",
         q4c2: "images/quiz/mascara.jpg",
-        q4c3: "images/quiz/blushh.jpg",
+        q4c3: "images/quiz/blush.jpg",
         q4c4: "images/quiz/foundation-product.jpg"
     },
     values: {
@@ -282,8 +298,25 @@ var userSelecteddAnswers = [];
 //     });
 
   // Popup Window
+  /*
   document.getElementById("submit").addEventListener("click", function(){
       document.querySelector(".signin").style.display = "flex";
+  })
+  */
+  document.getElementById("submit").addEventListener("click", function(){
+      if (collectValues()) {
+        var link = "/quiz?";
+        link += "tone1=" + arr[1] + "&";
+        link += "tone2=" + arr[2] + "&";
+        link += "prod1=" + arr[3] + "&";
+        link += "prod2=" + arr[4];
+
+        fetch(link).then(response => response.json()).then((result) => {
+          location.replace("index.html");
+        });
+      } else {
+        alert("Please complete all questions");
+      }
   })
 
   document.querySelector(".close-btn").addEventListener("click", function(){
