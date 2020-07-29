@@ -12,6 +12,7 @@ const keywordInput = document.getElementById('keyword-input');
 const maxresultInput = document.getElementById('maxresult-input');
 const orderInput = document.getElementById('order-input');
 const videoList = document.getElementById('videoListContainer');
+const videoTitle = document.getElementById('videoTitleContainer');
 var pageToken = '';
 
 ytForm.addEventListener('submit', e => {
@@ -39,13 +40,17 @@ function execute() {
     .then(function(response) {
         const listItems = response.result.items;
         if (listItems) {
-            let output = '<h4>Videos</h4><ul>';
+            let output = '';
+            let outputTitles = '';
             listItems.forEach(item => {
                 const videoId = item.id.videoId;
                 const videoTitle = item.snippet.title;
-                output += `<a data-fancybox href="https://www.youtube.com/watch?v=${videoId}"><img style="30px; white;" width="100" height="50" src="http://i3.ytimg.com/vi/${videoId}/hqdefault.jpg" /></a>`;
+                var shortTitle = videoTitle.substring(0, videoTitle.length);
+                output += `<div class="item"><a data-fancybox href="https://www.youtube.com/watch?v=${videoId}"><img width="100" height="100" src="http://i3.ytimg.com/vi/${videoId}/hqdefault.jpg" /><p>${shortTitle}</p></a></div>`
             });
+            output+='<br>';
             videoList.innerHTML = output;
+            videoTitle.innerHTML = outputTitles;
         }
     },
     function(err) { console.error("Execute error", err); });
