@@ -1,11 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-    <body>
-        <p><a href="/home.html">Real Here</a></p>
-        <p><a href="./Pages/test.html">Upload Data Here</a></p>
-        <p><a href="/auth">Click Here</a></p>
-        <p><a href="./Pages/index.jsp">Test here</a></p>
-        <p><a href="./Pages/test.jsp">Other Test Here</a></p>
-        <p><a href="./Pages/imageRec.html">Other other test here</a></p>
-    </body>
+<html lang = "en">
+<head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0"> 
+    <meta http-equiv="X-UA-Compatible" content = "ie=edge">
+    <title>Home | Style Advisor</title>
+    <link rel = "stylesheet" href="css/home.css">
+</head>
+<body onload="loadUser()">
+    <!-- Sign-In Button -->
+    <div id="sign-in">
+        <!-- <a href="" class="button">Sign-In</a> -->
+        <button id="sign" type="button" onclick="location.href='/auth'"></button>
+    </div>
+
+    <div id="content">
+        <!-- Logo Design (TBD) -->
+        <div id="logo">
+            <h1>Logo Design</h1>
+            <span class = "circle"></span>
+        </div>
+
+        <!-- Home Buttons -->
+        <div id="home">
+            <!-- <button type="button"><a id="tag" href="products.html">Products</a></button> -->
+            <a href="products.html" id="tag"><button type="button">Products</button></a>
+            <a href="quiz.html" id="tag"><button type="button" id="quiz">Take Quiz</button>
+        </div>
+    </div>
+
+    <script src="/js/home.js"></script>
+</body>
 </html>
