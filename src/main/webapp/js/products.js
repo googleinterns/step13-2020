@@ -6,7 +6,6 @@ function loadUser() {
     var rec = document.getElementById("recommend");
     var profile = document.getElementById("profile");
     var quiz = document.getElementById("quiz");
-    //var heart = document.getElementById("my_heart");
       
     if(list.confirm === "Y") {
       login.innerHTML = "Sign-Out";
@@ -14,14 +13,12 @@ function loadUser() {
       rec.style.visibility = "visible";
       profile.style.visibility = "visible";
       quiz.style.visibility = "visible";
-      //heart.style.visibility = "visible";
     } else {
       login.innerHTML = "Sign-In";
       like.style.visibility = "hidden";
       rec.style.visibility = "hidden";
       profile.style.visibility = "hidden";
       quiz.style.visibility = "hidden";
-      //heart.style.visibility = "hidden";
     }
   });
 
@@ -46,12 +43,10 @@ function getProds(sets) {
                 "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
                     "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
                     "<button type=\"button\" class=\"quickview\">View Details</button>" +
-                    //"<span class=\"product-brand-label\">" + offer.name + "</span>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
                     "<h4 class=\"title\">" +
-                    //"<a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a>" + 
                     offer.name + "</h4>" +
                     "<div class=\"price\">$" + offer.cost +
                     "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
@@ -145,14 +140,14 @@ function filter(sets) {
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
-                "<div class=\"product-image\">" +
+                "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
                     "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
-                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
-                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
+                    "<button type=\"button\" class=\"quickview\">View Details</button>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
-                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
+                    "<h4 class=\"title\">" +
+                    offer.name + "</h4>" +
                     "<div class=\"price\">$" + offer.cost +
                     "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
@@ -181,14 +176,14 @@ function getRecs() {
       productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
-                "<div class=\"product-image\">" +
+                "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
                     "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
-                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
-                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
+                    "<button type=\"button\" class=\"quickview\">View Details</button>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
-                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
+                    "<h4 class=\"title\">" +
+                    offer.name + "</h4>" +
                     "<div class=\"price\">$" + offer.cost +
                     "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
@@ -216,16 +211,16 @@ function getLiked(sets) {
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
-                "<div class=\"product-image\">" +
+                "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
                     "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
-                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
-                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
+                    "<button type=\"button\" class=\"quickview\">View Details</button>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
-                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
+                    "<h4 class=\"title\">" +
+                    offer.name + "</h4>" +
                     "<div class=\"price\">$" + offer.cost +
-                    "<span class=\"glyphicon glyphicon-remove\" onclick=\"removeLike("+ offer.id +")\"></span></div>" +
+                    "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -269,14 +264,14 @@ function search() {
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
-                "<div class=\"product-image\">" +
+                "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
                     "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
-                    "<button type=\"button\" class=\"quickview\" onclick=\"getDetails(" + offer.id + ")\">View Details</button>" +
-                    "<span class=\"product-brand-label\">" + offer.name + "</span>" +
+                    "<button type=\"button\" class=\"quickview\">View Details</button>" +
                 "</div>" +
                 "<!-- Product Content -->" +
                 "<div class=\"product-content\">" +
-                    "<h4 class=\"title\"><a target=\"_blank\" href=\""+ offer.productUrl +"\">" + offer.name +"</a></h4>" +
+                    "<h4 class=\"title\">" +
+                    offer.name + "</h4>" +
                     "<div class=\"price\">$" + offer.cost +
                     "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
                 "</div>" +
@@ -293,7 +288,7 @@ function getDetails(id) {
 
     document.getElementById("main_div").innerHTML = 
       "<h3>Description</h3>" +
-      "<p id=\"putDefault\"> <!-- Or should putDesc be placed here? -->" +
+      "<p id=\"putDefault\">" +
         "DESCRIPTION GOES HERE" +
       "</p>";
 
@@ -307,6 +302,8 @@ function getDetails(id) {
     document.getElementById("putIngs").innerText = products.ings;
     document.getElementById("brandInfo").innerText = products.brand;
     document.getElementById("nameDesc").innerText = products.name;
+    document.getElementById("nameDesc").href = products.productUrl;
+    document.getElementById("price").innerText = "$" + products.cost;
     document.getElementById("product-pic-popup").onerror = "this.onerror=null; this.src='makeup.jpg'";
 
     console.log(products.imgUrl);
@@ -317,6 +314,8 @@ function getDetails(id) {
       document.getElementById("product-pic-popup").src = "makeup.jpg";
     }
 
+    console.log(products.rating);
+    getRatings(products.rating);
     showDetails();
   });
 }
