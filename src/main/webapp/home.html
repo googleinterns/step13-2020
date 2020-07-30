@@ -20,7 +20,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-sm container-fluid stick-top navbar-light bg-lignt pt-3" style="position: fixed-top;"> 
         <!-- Brand Name -->
-        <h3 href="products.html" class="brand-name">Style Advisor</h3>
+        <h3 href="products.html" class="brand-name">Style <span class="advisor">Advisor</span><span><img class="logo" src="images/home/1.png"></span></h3>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-tog" data-toggle="#navbarResponsive">
             <span class="navbar-toggler-icon" data-toggle="collapse"></span>
         </button>
@@ -58,24 +58,12 @@
         <div class="login-container">
             <form action="" method="POST">
                 <div class="heading">
-                    <img src="images/home/new-profile.svg" class="logo"> <!-- Style Advisor Logo (coming soon) -->
+                    <img src="images/home/new-profile.svg" class="profile-avi"> <!-- Style Advisor Logo (coming soon) -->
                     <h2 id="welcome">Welcome</h2>
                     <h4>Sign in to your account</h4>
                 </div>
-                <div class="input-field">
-                    <i class='bx bx-envelope'></i>
-                    <input id="email" type="text" placeholder="Enter Email">
-                </div>
-                <div class="input-field">
-                    <i class='bx bx-lock'></i>
-                    <input id="password" type="password" placeholder="Password">
-                </div>
-                <!-- Forgot Password | If not necessary, then delete -->
-                <h5><a href="#" class="forgot-pswd">Forgot Password?</a></h5>
                 <!-- Sign In Button -->
                 <input type="submit" id="sign-in" value="Sign In" onclick="location.href='/auth'">
-                <!-- Sign Up Button | If not necessary, then delete -->
-                <p>Don't have an account? <span><a href="#" style="color:rgb(141, 80, 182);">Sign up</a></span></p>
             </form>
         </div>
     </div>
