@@ -1,12 +1,11 @@
-gapi.load("client", loadClient);
 
-function loadClient() {
+gapi.load("client", loadClient);
+    function loadClient() {
     gapi.client.setApiKey("AIzaSyAHduDbTPxThjGueKTvIaJHNMV8SRLyje0");
     return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
-}
-
+    }
 const ytForm = document.getElementById('yt-form');
 const keywordInput = document.getElementById('keyword-input');
 const maxresultInput = document.getElementById('maxresult-input');
@@ -45,8 +44,9 @@ function execute() {
             listItems.forEach(item => {
                 const videoId = item.id.videoId;
                 const videoTitle = item.snippet.title;
-                var shortTitle = videoTitle.substring(0, videoTitle.length);
-                output += `<div class="item"><a data-fancybox href="https://www.youtube.com/watch?v=${videoId}"><img width="100" height="100" src="http://i3.ytimg.com/vi/${videoId}/hqdefault.jpg" /><p>${shortTitle}</p></a></div>`
+                var shortTitle = videoTitle.substring(0, 10);
+                output += //`<div class="item">
+                output+=`<a data-fancybox href="https://www.youtube.com/watch?v=${videoId}"><img width="100" height="100" src="http://i3.ytimg.com/vi/${videoId}/hqdefault.jpg" /><p>${shortTitle}...</p></a>`
             });
             output+='<br>';
             videoList.innerHTML = output;

@@ -31,37 +31,26 @@ public class UserAuthServlet extends HttpServlet {
       String logoutUrl = userService.createLogoutURL(
         urlToRedirectToAfterUserLogsOut);
 
-      response.getWriter().println("<head><style>" +
-      "div.topper { background-color: lightblue; width: 300px;"+
-      "border: 15px solid purple;" +
-      "padding: 50px; margin: auto; text-align: center;}" +
-      "ul { list-style-type: none; margin: 0;" +
-      "padding: 0; overflow: hidden; background-color: #333; }" +
-      "li { float: left; } li a { display: block; color: white;" +
-      "text-align: center; padding: 14px 16px; text-decoration: none; }" +
-      "li a:hover { background-color: #111 }" +
-      "header.masthead { padding-top: 10.5rem; padding-bottom: 50rem;" +
-      "text-align: center; color: #fff;" +
-      "background-color: lightblue;" +
-      "background-repeat: no-repeat; background-attachment: scroll;" +
-      "background-position: center center; background-size: cover; }" +
-      "header.masthead .masthead-heading { font-size: 3.25rem;" +
-      "font-weight: 700; line-height: 3.25rem;" +
-      "margin-bottom: 2rem; font-family: \"Montserrat\", -apple-system, " +
-      "BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", " +
-      "Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", " +
-      "\"Segoe UI Symbol\", \"Noto Color Emoji\"; }" +
-      "@media (min-width: 768px) { header.masthead { " +
-      "padding-top: 17rem; padding-bottom: 12.5rem; }" +
-      "header.masthead .masthead-heading { font-size: 4.5rem;" +
-      "font-weight: 700; line-height: 4.5rem;" +
-      "margin-bottom: 8rem; } }" +
-      "</style></head><body>" +
-      "<ul><li><a class=\"active\" href=" +
-      "\"index.html\">Home</a></li></ul>" +
-      "<header class=\"masthead\"><div class \"topper\">" +
-      "<div class=\"masthead-heading\"><a href=\"" + logoutUrl + "\">LOG-OUT HERE" +
-      "</a></div></div></header></body>"
+      response.getWriter().println("<head><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" +
+      "integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"+ 
+      "crossorigin=\"anonymous\"> + \"<link href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css\" rel=\"stylesheet\">" +
+      "<style>*{overflow: auto;}" + "body { text-align: center; font-family: Arial, Helvetica, sans-serif;}" + 
+      "nav{box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 20px; height: 70px; width: inherit;} h1 {color:rebeccapurple;}" +
+      "input[type=file]{background-color: rgba(10, 10, 10, 0.884);border: none; font-size: 15px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
+      "button {background-color: rgba(10, 10, 10, 0.884);border: none; font-size: 14px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
+      "#return_button{background-color: rgba(10, 10, 10, 0.884); border: none; font-size: 14px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
+      ".container {height: 200px;position: relative;border: 3px solid green;}" +
+      ".center {margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%)transform: translate(-50%, -50%);}" +
+      "</style></head><body><nav class=\"navbar navbar-light white\" style=\"position: fixed-top;\">" +
+               "<div class=\"container-fluid\">" +
+                    "<h1>Style Advisor</h1>" + 
+                    "<a href=\"../index.html\"><button type=\"button\" id=\"return_button\">Home</button></a>" +
+               "</div>" +
+       "</nav>" +
+            "<div class=\"center\">" +
+                "<a href=\"" + loginUrl + "\"><button type=\"button\">LogIn</button>" +
+               " </div>" +
+        "</body>"
       );
     } 
     else {
@@ -70,37 +59,26 @@ public class UserAuthServlet extends HttpServlet {
       String loginUrl = userService.createLoginURL(
         urlToRedirectToAfterUserLogsIn);
       
-      response.getWriter().println("<head><style>" +
-      "div.topper { background-color: lightblue; width: 300px;"+
-      "border: 15px solid purple;" +
-      "padding: 50px; margin: auto; text-align: center;}" +
-      "ul { list-style-type: none; margin: 0;" +
-      "padding: 0; overflow: hidden; background-color: #333; }" +
-      "li { float: left; } li a { display: block; color: white;" +
-      "text-align: center; padding: 14px 16px; text-decoration: none; }" +
-      "li a:hover { background-color: #111 }" +
-      "header.masthead { padding-top: 10.5rem; padding-bottom: 50rem;" +
-      "text-align: center; color: #fff;" +
-      "background-color: lightblue;" +
-      "background-repeat: no-repeat; background-attachment: scroll;" +
-      "background-position: center center; background-size: cover; }" +
-      "header.masthead .masthead-heading { font-size: 3.25rem;" +
-      "font-weight: 700; line-height: 3.25rem;" +
-      "margin-bottom: 2rem; font-family: \"Montserrat\", -apple-system, " +
-      "BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", " +
-      "Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", " +
-      "\"Segoe UI Symbol\", \"Noto Color Emoji\"; }" +
-      "@media (min-width: 768px) { header.masthead { " +
-      "padding-top: 17rem; padding-bottom: 12.5rem; }" +
-      "header.masthead .masthead-heading { font-size: 4.5rem;" +
-      "font-weight: 700; line-height: 4.5rem;" +
-      "margin-bottom: 8rem; } }" +
-      "</style></head><body>" +
-      "<ul><li><a class=\"active\" href=" +
-      "\"index.html\">Home</a></li></ul>" +
-      "<header class=\"masthead\"><div class \"topper\">" +
-      "<div class=\"masthead-heading\"><a href=\"" + loginUrl + "\">LOGIN HERE" +
-      "</a></div></div></header></body>"
+      response.getWriter().println("<head><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" +
+      "integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"+ 
+      "crossorigin=\"anonymous\"> + \"<link href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css\" rel=\"stylesheet\">" +
+      "<style>*{overflow: auto;}" + "body { text-align: center; font-family: Arial, Helvetica, sans-serif;}" + 
+      "nav{box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 20px; height: 70px; width: inherit;} h1 {color:rebeccapurple;}" +
+      "input[type=file]{background-color: rgba(10, 10, 10, 0.884);border: none; font-size: 15px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
+      "button {background-color: rgba(10, 10, 10, 0.884);border: none; font-size: 14px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
+      "#return_button{background-color: rgba(10, 10, 10, 0.884); border: none; font-size: 14px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
+      ".container {height: 200px;position: relative;border: 3px solid green;}" +
+      ".center {margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%)transform: translate(-50%, -50%);}" +
+      "</style></head><body><nav class=\"navbar navbar-light white\" style=\"position: fixed-top;\">" +
+               "<div class=\"container-fluid\">" +
+                    "<h1>Style Advisor</h1>" + 
+                    "<a href=\"../index.html\"><button type=\"button\" id=\"return_button\">Home</button></a>" +
+               "</div>" +
+       "</nav>" +
+            "<div class=\"center\">" +
+                "<a href=\"" + loginUrl + "\"><button type=\"button\">LogIn</button>" +
+               " </div>" +
+        "</body>"
       );
     }
   }

@@ -11,11 +11,9 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+var userSelecteddAnswers = [];
+ 
 (window.onload = function(){
-  
-  var userSelectedAnswers = [];
-  
   function buildQuiz(){
     const output = [];
     myQuestions.forEach(
@@ -56,10 +54,15 @@
  
   function showResults(){
     const answerContainers = quizContainer.querySelectorAll('.answers');
+    const answerValueContainer = quizContainer.querySelectorAll('.values');
     myQuestions.forEach( (currentQuestion, questionNumber) => {
       const answerContainer = answerContainers[questionNumber];
       const selector = `input[name=q${questionNumber}]:checked`;
       const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+      const userValue = (answerValueContainer.querySelector(selector) || {}).value;
+
+      userSelectedAnswers.push(userValue);
+      console.log(userValue)
     });
     resultsContainer.innerHTML = `Done! Click 'Results' to view your product recommendations!`;
   }
@@ -324,9 +327,8 @@
         var usersPick = userSelectedAnswers;
         var hiddenSelectedAnswers = document.getElementById("selectedAnswers");
         hiddenSelectedAnswers.value = usersPick.join(",");
-        var form = document.getElementById("answers");
+        var form = document.getElementById("answers").action;
         form.submit();
         console.log("done");
   }
-
 })();
