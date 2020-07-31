@@ -1,16 +1,23 @@
 function loadUser() {
 
   fetch('/veri').then(response => response.json()).then((list) => {
-    var login = document.getElementById("sign");
+    var form = document.getElementById("infoForm");
+    var login = document.getElementById("sign-in");
     var quiz = document.getElementById("quiz");
 
     if(list.confirm === "Y") {
-      login.innerHTML = "Sign-Out";
+      login.value = "Sign-Out";
       quiz.style.visibility = "visible";
 
     } else {
-      login.innerHTML = "Sign-In";
+      login.value = "Sign-In";
       quiz.style.visibility = "hidden";
     }
+
+    form.addEventListener('submit', handleForm);
   });
+}
+
+function handleForm(event) {
+    event.preventDefault();
 }

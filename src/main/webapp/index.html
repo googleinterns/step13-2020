@@ -5,30 +5,88 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0"> 
     <meta http-equiv="X-UA-Compatible" content = "ie=edge">
     <title>Home | Style Advisor</title>
+    <!-- CSS -->
     <link rel = "stylesheet" href="css/home.css">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <!-- Box Icons JS & CSS -->
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body onload="loadUser()">
-    <!-- Sign-In Button -->
-    <div id="sign-in">
-        <!-- <a href="" class="button">Sign-In</a> -->
-        <button id="sign" type="button" onclick="location.href='/auth'"></button>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-sm container-fluid stick-top navbar-light bg-lignt pt-3" style="position: fixed-top;"> 
+        <!-- Brand Name -->
+        <h3 href="products.html" class="brand-name">Style Advisor</h3>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-tog" data-toggle="#navbarResponsive">
+            <span class="navbar-toggler-icon" data-toggle="collapse"></span>
+        </button>
+        <!-- Collapsible Menu -->
+        <div class="collapse navbar-collapse" id="navbar-tog">
+            <!-- Nav Items -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link">View Products</a>
+                </li>
+                <li class="nav-item">
+                    <!-- Log-Out should take the user back to the home screen & send "log-out successful" message -->
+                    <a href="quiz.html" class="nav-link">Take Quiz</a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Background Image -->
+    <img class="wave" src="images/home/wave.png">
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Design Container-->
+        <div class="design-container">
+            <!-- Image Overlay -->
+            <div class="img-design">
+                <img class="img-overlay" src="images/home/makeup.svg">
+            </div>
+        </div>
+        <!-- Login Container -->
+        <div class="login-container">
+            <form action="" method="POST">
+                <div class="heading">
+                    <img src="images/home/new-profile.svg" class="logo"> <!-- Style Advisor Logo (coming soon) -->
+                    <h2 id="welcome">Welcome</h2>
+                </div>
+                <div class="input-field">
+                    <i class='bx bx-envelope'></i>
+                    <input id="email" type="text" placeholder="Enter Email">
+                </div>
+                <div class="input-field">
+                    <i class='bx bx-lock'></i>
+                    <input id="password" type="password" placeholder="Password">
+                </div>
+                <!-- Forgot Password | If not necessary, then delete -->
+                <h5><a href="#" class="forgot-pswd">Forgot Password?</a></h5>
+                <!-- Sign In Button -->
+                <input type="submit" id="sign-in" value="Sign In" onclick="location.href='/auth'">
+                <!-- Sign Up Button | If not necessary, then delete -->
+                <p>Don't have an account? <span><a href="#" style="color:rgb(141, 80, 182);">Sign up</a></span></p>
+            </form>
+        </div>
     </div>
 
-    <div id="content">
-        <!-- Logo Design (TBD) -->
-        <div id="logo">
-            <h1>Logo Design</h1>
-            <span class = "circle"></span>
-        </div>
-
-        <!-- Home Buttons -->
-        <div id="home">
-            <!-- <button type="button"><a id="tag" href="products.html">Products</a></button> -->
-            <a href="products.html" id="tag"><button type="button">Products</button></a>
-            <a href="quiz.html" id="tag"><button type="button" id="quiz">Take Quiz</button>
-        </div>
-    </div>
-
+    <!-- JavaScript -->
     <script src="/js/home.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>

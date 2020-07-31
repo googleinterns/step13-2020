@@ -154,11 +154,14 @@ video{
  
 /* Product Details Container*/
 .product-details{
+    border: 1px;
     width: 500px;
     height: 450px;
     padding: 5px;
     background-color: white;
     z-index: 1999999;
+    overflow-y:hidden;
+    overflow-x:scroll;
 }
  
 .product-title{

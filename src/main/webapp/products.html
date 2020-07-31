@@ -30,7 +30,48 @@
 
         <!-- Video Slider CSS -->
         <link rel="stylesheet" href="css/slider.css">
- 
+        <!-- Youtube API styling -->
+        <style>
+            body{
+        font-size: 12px;
+        }
+        .item{
+        font-size: 12px;
+        width:100px;
+        text-align:center;
+        display:block;
+        background-color: transparent;
+        border: 1px solid transparent;
+        margin-right: 10px;
+        margin-bottom: 1px;
+        float:left;
+        }
+        input[type=submit]{
+        background-color: rgba(10, 10, 10, 0.884);
+        border: none; 
+        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        transition: 0.3s;
+        opacity: 1;
+        height: 35px;
+        align-items: center;
+        }
+        .border{ 
+        border-width: 25px; 
+        border-color: red; 
+        border-style: solid; }
+        li{
+        display: inline-block;
+        }
+        *{
+        box-sizing: border-box;
+
+        }
+        </style>
         <!-- JS Functions -->
         <script>
             function showDetails(){
@@ -48,9 +89,15 @@
                 document.getElementById('main_div').innerHTML = document.getElementById(param_div_id).innerHTML;
             }
         </script>
+        <script type="text/javascript">
+            window.onload =  function(){
+                loadUser();
+                loadClient();
+            };
+        </script>
     
     </head>
-    <body onload="loadUser()">
+    <body>
         <!-- Brand Name -->
         <div class="jumbotron text-center" style="margin-bottom:0;">
             <h1>Style Advisor</h1>
@@ -159,174 +206,20 @@
 
         <!-- Product Grid --> 
         <div class="container">
-            <div class="row" id="prodGrid">
-
-                <!-- Product #1
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="">
-                                <img src="images/foundation.jpg" alt="">
-                            </a>
-                            <span class="product-brand-label">NARS Cosmetics</span>
-                        </div>
-                        <!-- Product Content
-                        <div class="product-content">
-                            <h4 class="title"><a target="_blank" href="https://www.narscosmetics.com/USA/gobi-sheer-glow-foundation/0607845060567.html?gclsrc=aw.ds&&gclid=Cj0KCQjwoub3BRC6ARIsABGhnybJPY4B6yUqqkB5E-UeGnO8jX0UTKF5ls1TVDn2DUd3rF6tpeDhnhoaAi_VEALw_wcB">
-                                NARS Sheer Glow Foundation</a></h4>
-                            <div class="price">$21.00 <a target="" href="">
-                                <span class="glyphicon glyphicon-heart"></span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product #2
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="">
-                                <img src="images/foundation.jpg" alt="">
-                            </a>
-                            <span class="product-brand-label">NARS Cosmetics</span>
-                        </div>
-                        <!-- Product Content
-                        <div class="product-content">
-                            <h4 class="title"><a href="">
-                                NARS Sheer Glow Foundation</a></h4>
-                            <div class="price">$21.00 <a target="" href="">
-                                <span class="glyphicon glyphicon-heart"></span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product #3
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="">
-                                <img src="images/foundation.jpg" alt="">
-                            </a>
-                            <span class="product-brand-label">NARS Cosmetics</span>
-                        </div>
-                        <!-- Product Content
-                        <div class="product-content">
-                            <h4 class="title"><a href="">
-                                NARS Sheer Glow Foundation</a></h4>
-                            <div class="price">$21.00 <a target="" href="">
-                                <span class="glyphicon glyphicon-heart"></span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product #4
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="">
-                                <img src="images/foundation.jpg" alt="">
-                            </a>
-                            <span class="product-brand-label">NARS Cosmetics</span>
-                        </div>
-                        <!-- Product Content
-                        <div class="product-content">
-                            <h4 class="title"><a href="">
-                                NARS Sheer Glow Foundation</a></h4>
-                            <div class="price">$21.00 <a target="" href="">
-                                <span class="glyphicon glyphicon-heart"></span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product #5
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="">
-                                <img src="images/foundation.jpg" alt="">
-                            </a>
-                            <span class="product-brand-label">NARS Cosmetics</span>
-                        </div>
-                        <!-- Product Content
-                        <div class="product-content">
-                            <h4 class="title"><a href="">
-                                NARS Sheer Glow Foundation</a></h4>
-                            <div class="price">$21.00 <a target="" href="">
-                                <span class="glyphicon glyphicon-heart"></span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product #6
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="">
-                                <img src="images/foundation.jpg" alt="">
-                            </a>
-                            <span class="product-brand-label">NARS Cosmetics</span>
-                        </div>
-                        <!-- Product Content
-                        <div class="product-content">
-                            <h4 class="title"><a href="">
-                                NARS Sheer Glow Foundation</a></h4>
-                            <div class="price">$21.00 <a target="" href="">
-                                <span class="glyphicon glyphicon-heart"></span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product #7
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="">
-                                <img src="images/foundation.jpg" alt="">
-                            </a>
-                            <span class="product-brand-label">NARS Cosmetics</span>
-                        </div>
-                        <!-- Product Content
-                        <div class="product-content">
-                            <h4 class="title"><a href="">
-                                NARS Sheer Glow Foundation</a></h4>
-                            <div class="price">$21.00 <a target="" href="">
-                                <span class="glyphicon glyphicon-heart"></span></a></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product #8
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid">
-                        <div class="product-image">
-                            <a href="">
-                                <img src="images/foundation.jpg" alt="">
-                            </a>
-                            <span class="product-brand-label">NARS Cosmetics</span>
-                        </div>
-                        <!-- Product Content
-                        <div class="product-content">
-                            <h4 class="title"><a href="">
-                                NARS Sheer Glow Foundation</a></h4>
-                            <div class="price">$21.00 <a target="" href="">
-                                <span class="glyphicon glyphicon-heart"></span></a></div>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
+            <div class="row" id="prodGrid"></div>
         </div>
 
-        <!-- -->
         <!-- Product Details Popup -->
         <div id="pd-container">
             <div class="img-container">
                 <div class="product-img">
-                    <img src="" class="product-pic" id="product-pic-popup">
-               </div>
+                    <img src="makeup.jpg" class="product-pic" id="product-pic-popup">
+                </div>
             </div>
             <div class="product-details"> 
                 <header>
-                    <h2 class="product-title"><a id="nameDesc" href="#" class="brand-name" style="text-decoration: none;">ENTER NAME HERE
-                    </a><span><i id="my_heart" class="fa fa-heart" onclick="setColor()" aria-hidden="true"></i></span></h2>
+                    <h2 class="product-title"><a id="nameDesc" href="#" class="brand-name" style="text-decoration: none;">ENTER NAME HERE</a></h2>
+                    <!-- </a><span><i id="my_heart" class="fa fa-heart" onclick="setColor()" aria-hidden="true"></i></span></h2> -->
                     <h4 id="brandInfo">ENTER BRAND HERE</h4>
                     
                     <!-- Product Star Ratings
@@ -363,52 +256,18 @@
                     </div>
                     <div id="content2">
                         <h3>How-To</h3>
-                        <div class="video-slider" style="width: 300px; height: 100px;">
-                            <div id="slider">
-                                <input type="radio" name="slider" id="slide1" checked>
-                                <input type="radio" name="slider" id="slide2">
-                                <input type="radio" name="slider" id="slide3">
-                                <input type="radio" name="slider" id="slide4">
-                                <div id="slides">
-                                    <div id="overflow">
-                                        <div class="inner">
-                                            <div class="slide slide_1">
-                                            <div class="slide-content">
-                                                <video width="300" height="200" controls>
-                                                    <source src="video/sample-mp4-file.mp4" type="video/mp4">
-                                                </video>
-                                            </div>
-                                            </div>
-                                            <div class="slide slide_2">
-                                            <div class="slide-content">
-                                                <video width="300" height="200" controls>
-                                                    <source src="video/sample-mp4-file.mp4" type="video/mp4">
-                                                </video>
-                                            </div>
-                                            </div>
-                                            <div class="slide slide_3">
-                                            <div class="slide-content">
-                                                <h2>Slide 3</h2>
-                                                <p>Content for Slide 3</p>
-                                            </div>
-                                            </div>
-                                            <div class="slide slide_4">
-                                            <div class="slide-content">
-                                                <h2>Slide 4</h2>
-                                                <p>Content for Slide 4</p>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="bullets">
-                                    <label for="slide1"></label>
-                                    <label for="slide2"></label>
-                                    <label for="slide3"></label>
-                                    <label for="slide4"></label>
-                                </div>
-                                </div>
-                        </div>
+                            <form id="yt-form">
+                                <p hidden><input type="text" id="keyword-input" value="makeup"></p>
+                                <p hidden><input type="number" id="maxresult-input" value="5"></p>
+                                <p hidden><input id="order-input" value="relevance"></p>
+                                <p>
+                                    <input type="submit" value="Click for Product Reviews">
+                                </p>
+                            </form>
+                            <div class="container">
+                                <div id="videoListContainer"></div>
+                                <div id="videoTitleContainer"></div>
+                            </div>
                     </div>
                     <div id="content3">
                         <h3>Ingredients</h3>
@@ -446,5 +305,9 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script src="/js/products.js"></script>
+        <script src="https://apis.google.com/js/api.js"></script>
+        <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js"></script>
+        <script src="../js/youtube.js"></script>
     </body>
 </html>

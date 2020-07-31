@@ -17,7 +17,7 @@ function loadUser() {
       var ctx = canvas.getContext('2d');
       var img = new Image();
 
-      img.src = '../images/user.jpg';
+      img.src = 'makeup.jpg';
       img.onload = function() {
         ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, 300, 300);
       }
@@ -44,7 +44,7 @@ function getRecs() {
         productGrid.innerHTML += 
           "<div class=\"col-md-auto product\">" +
             "<a href=\""+ offer.productUrl +"\">" +
-            "<img src=\"" + offer.imgUrl + "\" onerror=\"this.onerror=null; this.src='user.jpg'\"></a>" +
+            "<img src=\"" + offer.imgUrl + "\" onerror=\"this.onerror=null; this.src='makeup.jpg'\"></a>" +
             "<h5>" + str +"</h5>" +
         "</div>"
       }
