@@ -42,7 +42,7 @@ function getProds(sets) {
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
-                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
+                    "<img src=\""+ offer.imgUrl +"\" style=\"height:300px\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
                     "<button type=\"button\" class=\"quickview\">View Details</button>" +
                 "</div>" +
                 "<!-- Product Content -->" +
@@ -142,7 +142,7 @@ function filter(sets) {
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
-                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
+                    "<img src=\""+ offer.imgUrl +"\" style=\"height:300px\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
                     "<button type=\"button\" class=\"quickview\">View Details</button>" +
                 "</div>" +
                 "<!-- Product Content -->" +
@@ -178,7 +178,7 @@ function getRecs() {
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
-                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
+                    "<img src=\""+ offer.imgUrl +"\" style=\"height:300px\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
                     "<button type=\"button\" class=\"quickview\">View Details</button>" +
                 "</div>" +
                 "<!-- Product Content -->" +
@@ -213,7 +213,7 @@ function getLiked(sets) {
         "<div class=\"col-md-3 col-sm-6\">" +
             "<div class=\"product-grid\">" +
                 "<div class=\"product-image\" onclick=\"getDetails(" + offer.id + ")\">" +
-                    "<img src=\""+ offer.imgUrl +"\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
+                    "<img src=\""+ offer.imgUrl +"\" style=\"height:300px\" onerror=\"this.onerror=null; this.src='makeup.jpg'\" width=\"300\">" +
                     "<button type=\"button\" class=\"quickview\">View Details</button>" +
                 "</div>" +
                 "<!-- Product Content -->" +
@@ -221,7 +221,7 @@ function getLiked(sets) {
                     "<h4 class=\"title\">" +
                     offer.name + "</h4>" +
                     "<div class=\"price\">$" + offer.cost +
-                    "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-heart\" onclick=\"putLiked("+ offer.id +")\"></span></div>" +
+                    "<span id=\"l" + offer.id + "\" class=\"glyphicon glyphicon-remove\" onclick=\"removeLike("+ offer.id +")\"></span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -305,7 +305,10 @@ function getDetails(id) {
     document.getElementById("nameDesc").innerText = products.name;
     document.getElementById("nameDesc").href = products.productUrl;
     document.getElementById("price").innerText = "$" + products.cost;
-    document.getElementById("product-pic-popup").onerror = "this.onerror=null; this.src='makeup.jpg'";
+    document.getElementById("product-pic-popup").onerror = function () {
+        this.onerror=null; 
+        this.src='makeup.jpg';
+    };
 
     console.log(products.imgUrl);
 

@@ -33,11 +33,7 @@
                 </li>
                 <li class="nav-item">
                     <!-- Log-Out should take the user back to the home screen & send "log-out successful" message -->
-                    <a href="quiz.html" class="nav-link">Take Quiz</a>
-
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Sign Up</a>
+                    <a id="quiz" href="quiz.html" class="nav-link">Take Quiz</a>
                 </li>
             </ul>
         </div>
@@ -57,10 +53,11 @@
         </div>
         <!-- Login Container -->
         <div class="login-container">
-            <form action="" method="POST">
+            <form id="infoForm" method="POST">
                 <div class="heading">
                     <img src="images/home/new-profile.svg" class="logo"> <!-- Style Advisor Logo (coming soon) -->
                     <h2 id="welcome">Welcome</h2>
+                    <!--<h4>Sign in to your account</h4>
                 </div>
                 <div class="input-field">
                     <i class='bx bx-envelope'></i>
@@ -70,12 +67,12 @@
                     <i class='bx bx-lock'></i>
                     <input id="password" type="password" placeholder="Password">
                 </div>
-                <!-- Forgot Password | If not necessary, then delete -->
-                <h5><a href="#" class="forgot-pswd">Forgot Password?</a></h5>
+                <!-- Forgot Password | If not necessary, then delete
+                <h5><a href="#" class="forgot-pswd">Forgot Password?</a></h5> -->
                 <!-- Sign In Button -->
                 <input type="submit" id="sign-in" value="Sign In" onclick="location.href='/auth'">
                 <!-- Sign Up Button | If not necessary, then delete -->
-                <p>Don't have an account? <span><a href="#" style="color:rgb(141, 80, 182);">Sign up</a></span></p>
+                <!--<p>Don't have an account? <span><a href="#" style="color:rgb(141, 80, 182);">Sign up</a></span></p>-->
             </form>
         </div>
     </div>
