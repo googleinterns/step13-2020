@@ -1,7 +1,237 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Spartan:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Monteserrat:400,800');
  
+body{
+    font-family: 'Poppins', sans-serif;
+}
+ 
+/* Header */
+ 
+.advisor{
+    color: rgb(141, 80, 182);
+    font-family: 'Poppins', sans-serif;
+}
+ 
+/* Navigation Bar */
+nav{
+    width: inherit;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    color: black;
+}
+ 
+.navbar-expand-sm .navbar-nav .nav-link{
+    padding-right: 0.5rem;
+}
+ 
+.nav-link{
+    display: inline;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+ 
+.nav-link:hover{
+    cursor: pointer;
+    opacity: 0.5;
+    color: purple;
+}
+
+.btn{
+    border-color: rgb(141, 80, 182);;
+    color: rgb(141, 80, 182);;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn:hover{
+    background-color: rgb(141, 80, 182);;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border-color: rgb(141, 80, 182);;
+}
+ 
+.nav-brand{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    margin-left:20px;
+    color: black;
+}
+ 
+/* Heart Icon */
+/* #like {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border: solid 1px black;
+  border-radius: 50%;
+  display: inline-block;
+  z-index: -1;
+}
+ 
+.fa-heart{
+    margin-top:8px;
+    margin-left: 6px;
+} */
+ 
+/* Search Icon */
+.fa-search{
+    margin-left: 10px;
+}
+ 
+/* Search Form */
+.form-inline{
+    margin-left: 20px;
+}
+ 
+/* Visual Display */
+.visual-display{
+    background-color: white;
+    border-bottom: 2px solid lightgrey;
+}
+ 
+.extra-space{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+}
+ 
+.circle1 {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background-color: #d4bff751;
+  margin-right: auto;
+  margin-left: auto;
+}
+ 
+.circle2 {
+  transform: translate(16%, 17%);
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background-color: #d3bef5c5;
+}
+ 
+.banner-art{
+    width: 750px;
+    margin-top: 50px;
+    margin-left: 200px;
+    position: absolute;
+}
+ 
+.brand-phrase{
+    margin-bottom:70px;
+    margin-top: -490px;
+    margin-left: 100px;
+    width: 500px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 70px;
+    color: black;
+    position: relative;
+}
+ 
+.quiz-btn{
+    position: relative;
+    width: 10%;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    justify-content: center;
+    right: 0;
+    align-self: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    transition: 0.5s;
+    font-weight: bold;
+    background-color: rgb(141, 80, 182);
+    color: white;
+    margin-left: 100px;
+    margin-bottom: 100px;
+    margin-top: -700px;
+}
+ 
+.quiz-btn:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+ 
+/* Banner Strip */
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 200px;
+    margin-top: 50px;
+}
+ 
+.view-all{
+    display: inline;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 32px;
+}
+
+.float-container:after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.float-child {
+    float: left;
+}  
+
+/* Filter Dropdown */
+.menu-container{
+    display: flex;
+    position: relative;
+    width: 15%;
+    height: 100%;
+    background-color: white;
+    border-right: 1px solid grey;
+}
+
+.dropdown-header{
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.menu li{
+    display: block;
+}
+ 
+.container{
+    width: 70%;
+    margin-left: 30px;
+}
+
+.btn-primary:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.page-link{
+    border-color: black;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+}
+
+.page-link:hover{
+    opacity: 0.6;
+    cursor: pointer;
+    color: black;
+    border-color: black;
+}
+
+/* Product Display */
 .product-grid{
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
@@ -35,7 +265,7 @@
 .product-image{
     z-index: 1;
 }
-
+ 
 .product-grid .product-image a{
     display: block;
 }
@@ -154,18 +384,16 @@ video{
  
 /* Product Details Container*/
 .product-details{
-    border: 1px;
+    font-family: 'Poppins', sans-serif;
     width: 500px;
     height: 450px;
     padding: 5px;
     background-color: white;
     z-index: 1999999;
-    overflow-y:hidden;
-    overflow-x:scroll;
 }
  
 .product-title{
-    font-family: 'Quicksand';
+    font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-weight: bold;
     margin-top: 30px;
