@@ -32,9 +32,10 @@ public class GetProductDetails extends HttpServlet {
     private final long cost;
     private final String description;
     private final String ings;
+    private final double rating;
 
     Summary(long id, String name, String imgUrl, String type, String tone, 
-            String vegan, String brand, String productUrl, long cost, String description, String ings) {
+            String vegan, String brand, String productUrl, long cost, String description, String ings, double rating) {
       this.id = id;
       this.name = name;
       this.imgUrl = imgUrl;
@@ -46,6 +47,7 @@ public class GetProductDetails extends HttpServlet {
       this.cost = cost;
       this.description = description;
       this.ings = ings;
+      this.rating = rating;
     }
   }
 
@@ -59,6 +61,7 @@ public class GetProductDetails extends HttpServlet {
     long id = Long.parseLong(request.getParameter("id"));
 
     long cost;
+    double rating = 0;
     String imgUrl;
     String type;
     String tone;
@@ -73,7 +76,7 @@ public class GetProductDetails extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      if ( id == (long) entity.getProperty("id")) {
+      if (id == (long) entity.getProperty("id")) {
         imgUrl = (String) entity.getProperty("imgUrl");
         type = (String) entity.getProperty("type");
         tone = (String) entity.getProperty("tone");
@@ -85,7 +88,17 @@ public class GetProductDetails extends HttpServlet {
         description = (String) entity.getProperty("description");
         ings = (String) entity.getProperty("ingredients");
 
-        summary = new Summary(id, name, imgUrl, type, tone, vegan, brand, productUrl, cost, description, ings);
+        Query getRating = new Query("ProductRating");
+        PreparedQuery ratingResults = datastore.prepare(getRating);
+
+        for (Entity ratings : ratingResults.asIterable()) {
+          if (id == (long) ratings.getProperty("id")) {
+            rating = (double) ratings.getProperty("rating");
+            summary = new Summary(id, name, imgUrl, type, tone, vegan, brand, productUrl, cost, description, ings, rating);
+            break;
+          }
+        }
+
         break;
       }
     }
