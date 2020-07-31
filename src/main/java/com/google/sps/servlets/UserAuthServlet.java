@@ -48,7 +48,7 @@ public class UserAuthServlet extends HttpServlet {
                "</div>" +
        "</nav>" +
             "<div class=\"center\">" +
-                "<a href=\"" + loginUrl + "\"><button type=\"button\">LogIn</button>" +
+                "<a href=\"" + logoutUrl + "\"><button type=\"button\">LogIn</button>" +
                " </div>" +
         "</body>"
       );
