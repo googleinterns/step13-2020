@@ -106,6 +106,7 @@
     
     </head>
     <body id="body">
+        <div id="main_part">
          <!-- Navigation -->
         <nav class="navbar navbar-expand-sm stick-top pt-3"> 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-tog" data-toggle="#navbarResponsive">
@@ -162,7 +163,7 @@
             <div class="extra-space">
             </div>
         </div>
-
+ 
         <div class="pages" style="margin-top: 50px;">
             <ul class="pagination justify-content-center" style="margin:20px 0">
                 <li class="page-item"><button class="page-link" onclick="getProds(1)">Show All</button></li>
@@ -227,8 +228,10 @@
         </div> --> 
  
         <!-- Product Grid --> 
-        <div class="float-child container" style="position: relative;">
+        <div class="float-child container" style="position: relative;">
             <div class="row" id="prodGrid"></div>
+        </div>
+        </div>
         </div>
  
         <!-- Product Details Popup -->
@@ -307,7 +310,7 @@
         </div>
  
         <!-- Pagination -->
-        <div class="page-bottom" style="position: relative;">
+        <div class="page-bottom" style="position: relative;">
             <ul class="pagination justify-content-center" style="margin:20px 0">
                 <li class="page-item"><button id="show" class="page-link" onclick="">Show More</button></li>
             </ul>
@@ -333,5 +336,3 @@
         <script src="../js/youtube.js"></script>
     </body>
 </html>
-
-
