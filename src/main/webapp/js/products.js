@@ -308,7 +308,6 @@ function getDetails(id) {
         this.onerror=null; 
         this.src='makeup.jpg';
     };
- 
     console.log(products.imgUrl);
  
     if (products.imgUrl !== null && products.imgUrl !== "") {
@@ -316,7 +315,7 @@ function getDetails(id) {
     } else {
       document.getElementById("product-pic-popup").src = "makeup.jpg";
     }
- 
+    
     console.log(products.rating);
     getRatings(products.rating);
     showDetails();
