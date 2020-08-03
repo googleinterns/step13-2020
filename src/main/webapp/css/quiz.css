@@ -4,11 +4,51 @@
 @import url('https://fonts.googleapis.com/css?family=Monteserrat:400,800');
 
 /* Navigation Bar */
+/* nav{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    height: 70px;
+    width: inherit;
+} */
+/* Navigation Bar */
 nav{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     height: 70px;
     width: inherit;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    color: black;
+}
+
+.nav-link{
+    color: black;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 15px;
+    background-color: white;
+    width: 100%;
+}
+
+.nav-link:hover{
+    cursor: pointer;
+    color: rgb(141, 80, 182);
+}
+
+.brand-name{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 15px;
+    font-size: 30px;
+}
+
+.advisor{
+    color: rgb(141, 80, 182);
+}
+
+.dropdown{
+    float: right;
+    right: 10px;
+    position: fixed;
 }
 
 #home_btn{
