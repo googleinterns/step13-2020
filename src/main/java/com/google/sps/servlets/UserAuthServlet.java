@@ -31,26 +31,45 @@ public class UserAuthServlet extends HttpServlet {
       String logoutUrl = userService.createLogoutURL(
         urlToRedirectToAfterUserLogsOut);
 
-      response.getWriter().println("<head><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" +
-      "integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"+ 
-      "crossorigin=\"anonymous\"> + \"<link href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css\" rel=\"stylesheet\">" +
-      "<style>*{overflow: auto;}" + "body { text-align: center; font-family: Arial, Helvetica, sans-serif;}" + 
-      "nav{box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 20px; height: 70px; width: inherit;} h1 {color:rebeccapurple;}" +
-      "input[type=file]{background-color: rgba(10, 10, 10, 0.884);border: none; font-size: 15px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
-      "button {background-color: rgba(10, 10, 10, 0.884);border: none; font-size: 14px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
-      "#return_button{background-color: rgba(10, 10, 10, 0.884); border: none; font-size: 14px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
-      ".container {height: 200px;position: relative;border: 3px solid green;}" +
-      ".center {margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%)transform: translate(-50%, -50%);}" +
-      "</style></head><body><nav class=\"navbar navbar-light white\" style=\"position: fixed-top;\">" +
-               "<div class=\"container-fluid\">" +
-                    "<h1>Style Advisor</h1>" + 
-                    "<a href=\"../index.html\"><button type=\"button\" id=\"return_button\">Home</button></a>" +
-               "</div>" +
-       "</nav>" +
-            "<div class=\"center\">" +
-                "<a href=\"" + logoutUrl + "\"><button type=\"button\">LogIn</button>" +
-               " </div>" +
-        "</body>"
+      response.getWriter().println(
+       " <title>LogOut | Style Advisor</title>" +
+     "<link rel =\"stylesheet\" href=\"css/home.css\">" +
+    "<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\">" +
+    "<link href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css\" rel=\"stylesheet\">" +
+    "<script src=\"https://unpkg.com/boxicons@latest/dist/boxicons.js\"></script>" +
+    "<link href=\"https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css\" rel=\"stylesheet\">" +
+"</head>" +
+"<body onload=\"loadUser()\">" +
+    "<nav class=\"navbar navbar-expand-sm container-fluid stick-top navbar-light bg-lignt pt-3\" style=\"position: fixed-top;\"> " +
+      "  <h3 href=\"products.html\" class=\"brand-name\">Style Advisor</h3>" +
+       " <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-tog\" data-toggle=\"#navbarResponsive\">" +
+           "<span class=\"navbar-toggler-icon\" data-toggle=\"collapse\"></span> " +
+        "</button>" +
+        "<div class=\"collapse navbar-collapse\" id=\"navbar-tog\">" +
+            "<ul class=\"navbar-nav ml-auto\">" +
+                "<li class=\"nav-item\">" +
+                  "  <a id=\"quiz\" href=\"index.html\" class=\"nav-link\">Home</a>" +
+                "</li>" +
+            "</ul>" +
+        "</div>" +
+    "</nav>" +
+    "<img class=\"wave\" src=\"images/home/wave.png\">" +
+    "<div class=\"container\">" +
+        "<div class=\"design-container\">" +
+            "<div class=\"img-design\">" +
+                "<img class=\"img-overlay\" src=\"images/home/makeup.svg\">" +
+            "</div>" +
+        "</div>" +
+        "<div class=\"login-container\">" +
+            "<a href=\"" + logoutUrl + "\"><button type=\"button\">LogOut</button>" +
+        "</div>" +
+    "</div>" +
+    "<script src=\"/js/home.js\"></script>" +
+    "<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script>" +
+    "<script src=\"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js\" integrity=\"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\" crossorigin=\"anonymous\"></script>" +
+    "<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js\" integrity=\"sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI\" crossorigin=\"anonymous\"></script>" +
+"</body>" +
+"</html>"
       );
     } 
     else {
@@ -59,26 +78,45 @@ public class UserAuthServlet extends HttpServlet {
       String loginUrl = userService.createLoginURL(
         urlToRedirectToAfterUserLogsIn);
       
-      response.getWriter().println("<head><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" +
-      "integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"+ 
-      "crossorigin=\"anonymous\"> + \"<link href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css\" rel=\"stylesheet\">" +
-      "<style>*{overflow: auto;}" + "body { text-align: center; font-family: Arial, Helvetica, sans-serif;}" + 
-      "nav{box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 20px; height: 70px; width: inherit;} h1 {color:rebeccapurple;}" +
-      "input[type=file]{background-color: rgba(10, 10, 10, 0.884);border: none; font-size: 15px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
-      "button {background-color: rgba(10, 10, 10, 0.884);border: none; font-size: 14px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
-      "#return_button{background-color: rgba(10, 10, 10, 0.884); border: none; font-size: 14px;font-family: Arial, Helvetica, sans-serif;color: white;text-align: center;border: none;border-radius: 5px;transition: 0.3s;opacity: 1;height: 35px;}" +
-      ".container {height: 200px;position: relative;border: 3px solid green;}" +
-      ".center {margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%)transform: translate(-50%, -50%);}" +
-      "</style></head><body><nav class=\"navbar navbar-light white\" style=\"position: fixed-top;\">" +
-               "<div class=\"container-fluid\">" +
-                    "<h1>Style Advisor</h1>" + 
-                    "<a href=\"../index.html\"><button type=\"button\" id=\"return_button\">Home</button></a>" +
-               "</div>" +
-       "</nav>" +
-            "<div class=\"center\">" +
-                "<a href=\"" + loginUrl + "\"><button type=\"button\">LogIn</button>" +
-               " </div>" +
-        "</body>"
+      response.getWriter().println(
+       " <title>LogIn | Style Advisor</title>" +
+     "<link rel =\"stylesheet\" href=\"css/home.css\">" +
+    "<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\">" +
+    "<link href=\"//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css\" rel=\"stylesheet\">" +
+    "<script src=\"https://unpkg.com/boxicons@latest/dist/boxicons.js\"></script>" +
+    "<link href=\"https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css\" rel=\"stylesheet\">" +
+"</head>" +
+"<body onload=\"loadUser()\">" +
+    "<nav class=\"navbar navbar-expand-sm container-fluid stick-top navbar-light bg-lignt pt-3\" style=\"position: fixed-top;\"> " +
+      "  <h3 href=\"products.html\" class=\"brand-name\">Style Advisor</h3>" +
+       " <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbar-tog\" data-toggle=\"#navbarResponsive\">" +
+           "<span class=\"navbar-toggler-icon\" data-toggle=\"collapse\"></span> " +
+        "</button>" +
+        "<div class=\"collapse navbar-collapse\" id=\"navbar-tog\">" +
+            "<ul class=\"navbar-nav ml-auto\">" +
+                "<li class=\"nav-item\">" +
+                  "  <a id=\"quiz\" href=\"index.html\" class=\"nav-link\">Home</a>" +
+                "</li>" +
+            "</ul>" +
+        "</div>" +
+    "</nav>" +
+    "<img class=\"wave\" src=\"images/home/wave.png\">" +
+    "<div class=\"container\">" +
+        "<div class=\"design-container\">" +
+            "<div class=\"img-design\">" +
+                "<img class=\"img-overlay\" src=\"images/home/makeup.svg\">" +
+            "</div>" +
+        "</div>" +
+        "<div class=\"login-container\">" +
+            "<a href=\"" + loginUrl + "\"><button type=\"button\">LogIn</button>" +
+        "</div>" +
+    "</div>" +
+    "<script src=\"/js/home.js\"></script>" +
+    "<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script>" +
+    "<script src=\"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js\" integrity=\"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\" crossorigin=\"anonymous\"></script>" +
+    "<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js\" integrity=\"sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI\" crossorigin=\"anonymous\"></script>" +
+"</body>" +
+"</html>"
       );
     }
   }
