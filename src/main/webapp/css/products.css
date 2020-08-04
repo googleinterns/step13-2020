@@ -24,7 +24,7 @@ nav{
 }
  
 .navbar-expand-sm .navbar-nav .nav-link{
-    padding-right: 0.5rem;
+    padding-right: 1rem;
 }
  
 .nav-link{
@@ -37,15 +37,15 @@ nav{
 .nav-link:hover{
     cursor: pointer;
     opacity: 0.5;
-    color: purple;
+    color: rgb(141, 80, 182);
 }
-
+ 
 .btn{
     border-color: rgb(141, 80, 182);;
     color: rgb(141, 80, 182);;
     font-family: 'Poppins', sans-serif;
 }
-
+ 
 .btn:hover{
     background-color: rgb(141, 80, 182);;
     color: white;
@@ -177,17 +177,17 @@ nav{
     font-weight: bold;
     line-height: 32px;
 }
-
+ 
 .float-container:after {
     display: table;
     clear: both;
     content: "";
 }
-
+ 
 .float-child {
     float: left;
 }  
-
+ 
 /* Filter Dropdown */
 .menu-container{
     display: flex;
@@ -197,13 +197,13 @@ nav{
     background-color: white;
     border-right: 1px solid grey;
 }
-
+ 
 .dropdown-header{
     color: black;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
 }
-
+ 
 .menu li{
     display: block;
 }
@@ -212,25 +212,25 @@ nav{
     width: 70%;
     margin-left: 30px;
 }
-
+ 
 .btn-primary:hover{
     opacity: 0.6;
     cursor: pointer;
 }
-
+ 
 .page-link{
     border-color: black;
     color: black;
     font-family: 'Poppins', sans-serif;
 }
-
+ 
 .page-link:hover{
     opacity: 0.6;
     cursor: pointer;
     color: black;
     border-color: black;
 }
-
+ 
 /* Product Display */
 .product-grid{
     font-family: Arial, Helvetica, sans-serif;

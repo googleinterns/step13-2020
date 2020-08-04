@@ -5,9 +5,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+ 
         <title>Products | Style Advisor</title>
-
+ 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
@@ -15,22 +15,19 @@
         
         <!-- CSS -->
         <link rel="stylesheet" href="css/products.css">
-
+ 
         <!-- JavaScript & JQuery -->
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
+ 
         <!-- Font Awesome Library -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
         <script src="https://kit.fontawesome.com/star-rating.js"></script>
-
-        <!-- Sidebar CSS -->
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+ 
         <!-- Star Rating JS & CSS-->
         <link rel="stylesheet" href="css/star-rating.css">
         <script type="text/javascript" src="js/star-rating.js"></script>
-
+ 
         <!-- Video Slider CSS -->
         <link rel="stylesheet" href="css/slider.css">
         <!-- Youtube API styling -->
@@ -72,7 +69,7 @@
         }
         *{
         box-sizing: border-box;
-
+ 
         }
         </style>
         <!-- JS Functions -->
@@ -108,15 +105,9 @@
         </script>
     
     </head>
-
     <body id="body">
-        <div id="main_part" style="filter: brightness(1);" onclick="">
-        <!-- Brand Name -->
-        <div class="jumbotron text-center" style="margin-bottom:0;">
-            <h1>Style Advisor</h1>
-        </div>
-          
-        <!-- Navigation -->
+        <div id="main_part">
+         <!-- Navigation -->
         <nav class="navbar navbar-expand-sm stick-top pt-3"> 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-tog" data-toggle="#navbarResponsive">
                 <span class="navbar-toggler-icon" data-toggle="collapse"></span>
@@ -172,13 +163,15 @@
             <div class="extra-space">
             </div>
         </div>
-
-        <div class="pages" style="margin-top: 50px; position: relative;">
+ 
+        <div class="pages" style="margin-top: 50px;">
             <ul class="pagination justify-content-center" style="margin:20px 0">
                 <li class="page-item"><button class="page-link" onclick="getProds(1)">Show All</button></li>
             </ul>
         </div>
-    
+ 
+        <!--  Main Display -->
+ 
         <!-- Filter Bar -->
         <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter By
             <span class="caret"></span>
@@ -232,11 +225,12 @@
                 </ul>
             </div>
             <!-- </div>
-        </div> -->
-
+        </div> --> 
+ 
         <!-- Product Grid --> 
-        <div class="container">
+        <div class="float-child container" style="position: relative;">
             <div class="row" id="prodGrid"></div>
+        </div>
         </div>
         </div>
 
@@ -247,14 +241,7 @@
                     <img src="makeup.jpg" class="product-pic" id="product-pic-popup" style="max-height:380px">
                 </div>
             </div>
-            <!-- Product Details Popup -->
-            <div id="pd-container">
-                <div class="img-container">
-                    <div class="product-img">
-                        <img src="makeup.jpg" class="product-pic" id="product-pic-popup">
-                    </div>
-                </div>
-                <div class="product-details"> 
+            <div class="product-details"> 
                 <header>
                     <h2 class="product-title"><a id="nameDesc" href="#" target="_blank" class="brand-name" style="text-decoration: none;">ENTER NAME HERE</a></h2>
                     <!-- </a><span><i id="my_heart" class="fa fa-heart" onclick="setColor()" aria-hidden="true"></i></span></h2> -->
@@ -276,67 +263,66 @@
                         <button onclick="show('content1')" class="my_button" type="button">Description</button>
                         <button onclick="show('content2')" class="my_button" type="button">How-To</button>
                         <button onclick="show('content3')" class="my_button" type="button">Ingredients</button>
-                    </div>
-                    <div class="content">
-                        <!-- Default Display -->
-                        <div id="main_div">
-                            <h3>Description</h3>
-                            <p id="putDefault"> <!-- Or should putDesc be placed here? -->
-                                DESCRIPTION GOES HERE
-                            </p>
-                        </div>
-                        <!-- Change Display onclick -->
-                        <div id="content1">
-                            <h3>Description</h3>
-                            <p id="putDesc">
-                                DESCRIPTION GOES HERE
-                            </p>
-                        </div>
-                        <div id="content2">
-                            <h3>How-To</h3>
-                                <form id="yt-form">
-                                    <p hidden><input type="text" id="keyword-input" value="makeup"></p>
-                                    <p hidden><input type="number" id="maxresult-input" value="5"></p>
-                                    <p hidden><input id="order-input" value="relevance"></p>
-                                    <p>
-                                        <input type="submit" value="Click for Product Reviews">
-                                    </p>
-                                </form>
-                                <div class="container">
-                                    <div id="videoListContainer"></div>
-                                    <div id="videoTitleContainer"></div>
-                                </div>
-                        </div>
-                        <div id="content3">
-                            <h3>Ingredients</h3>
-                            <p id="putIngs">
-                                INGREDIENTS GOES HERE
-                            </p>
-                        </div>
-                    </div>
-                </div> 
-                <div class="close-btn">
-                    <button type="button" id="close-btn" onclick="closeDetails()">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
+                <div class="content">
+                    <!-- Default Display -->
+                    <div id="main_div">
+                        <h3>Description</h3>
+                        <p id="putDefault"> <!-- Or should putDesc be placed here? -->
+                            DESCRIPTION GOES HERE
+                        </p>
+                    </div>
+                    <!-- Change Display onclick -->
+                    <div id="content1">
+                        <h3>Description</h3>
+                        <p id="putDesc">
+                            DESCRIPTION GOES HERE
+                        </p>
+                    </div>
+                    <div id="content2">
+                        <h3>How-To</h3>
+                            <form id="yt-form">
+                                <p hidden><input type="text" id="keyword-input" value="makeup"></p>
+                                <p hidden><input type="number" id="maxresult-input" value="5"></p>
+                                <p hidden><input id="order-input" value="relevance"></p>
+                                <p>
+                                    <input type="submit" value="Click for Product Reviews">
+                                </p>
+                            </form>
+                            <div class="container">
+                                <div id="videoListContainer"></div>
+                                <div id="videoTitleContainer"></div>
+                            </div>
+                    </div>
+                    <div id="content3">
+                        <h3>Ingredients</h3>
+                        <p id="putIngs">
+                            INGREDIENTS GOES HERE
+                        </p>
+                    </div>
+                </div>
+            </div> 
+            <div class="close-btn">
+                <button type="button" id="close-btn" onclick="closeDetails()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </div>
-
+ 
         <!-- Pagination -->
         <div class="page-bottom" style="position: relative;">
             <ul class="pagination justify-content-center" style="margin:20px 0">
-                <li><button id="show" class="page-link" onclick="">Show More</button></li>
+                <li class="page-item"><button id="show" class="page-link" onclick="">Show More</button></li>
             </ul>
         </div>
-
+ 
         <!-- Footer -->
-        <!-- <div class="jumbotron text-center" style="margin-bottom:0px; width:100%; position:relative;"> 
+        <div class="jumbotron text-center" style="margin-bottom:0px; background-color:#d4bff751; font-family:'Poppins',sans-serif; font-size:15px;"> 
             <footer>
                 <p>Style Advisor, Copyright &copy; 2020</p>
                 <a id="back-to-top" href="#">Top</a>
             </footer>
-        </div> -->
+        </div>
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
