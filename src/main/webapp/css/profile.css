@@ -16,6 +16,10 @@ nav{
 
 /* Welcome Section ("Welcome to your Style Advisor") */
 
+body{
+       font-family: 'Poppins', sans-serif;
+}
+
 #welcome{
     display: inline-block;
 
@@ -23,7 +27,7 @@ nav{
 
 #welcome hr {
     width: auto;
-    border: 0.7px solid rebeccapurple;
+    border: 0.7px rgb(141, 80, 182);
     margin-bottom: 40px;
     overflow: hidden;
 
@@ -34,11 +38,11 @@ nav{
 }
 
 #welcome h1{
-    color: rebeccapurple;
+    color: rgb(141, 80, 182);
 }
 
 #welcome h4{
-    color: rebeccapurple;
+    color: rgb(141, 80, 182);
 }
 
 /* View Recommended Products */
@@ -58,7 +62,7 @@ nav{
 
 .product{
     font-family: Arial, Helvetica, sans-serif;
-    color: rebeccapurple;
+    color: rgb(141, 80, 182);
     position: relative;
     width: 150px;
     height: auto;
@@ -109,10 +113,10 @@ nav{
     margin-top: 40px;
 }
 button {
-    background-color: rgba(10, 10, 10, 0.884);
-    border: none; 
-    font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.5s;
+    text-transform: uppercase;
+    background-color: rgb(141, 80, 182);
     color: white;
     text-align: center;
     border: none;
@@ -121,4 +125,53 @@ button {
     opacity: 1;
     height: 35px;
     float: right;
+}
+* Navigation Bar */
+nav{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    height: 70px;
+    width: inherit;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    color: black;
+}
+
+.nav-link{
+    color: black;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 15px;
+    background-color: white;
+    width: 100%;
+}
+
+.nav-link:hover{
+    cursor: pointer;
+    color: rgb(141, 80, 182);
+}
+
+.brand-name{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 15px;
+    font-size: 30px;
+}
+
+.advisor{
+    color: rgb(141, 80, 182);
+}
+
+.dropdown{
+    float: right;
+    right: 10px;
+    position: fixed;
+}
+
+/* Login Container */
+.login-container{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-left: 150px;
+    margin-top: 60px;
 }

@@ -13,30 +13,39 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
         <!-- CSS -->
         <link rel="stylesheet" href="css/profile.css">
+      
         <!-- JavaScript -->
         <script src="js/profile.js"></script>
     </head>
     <body onload="loadUser()">
-        <!-- Navigation Bar -->
-        <nav class="navbar navbar-light white" style="position: fixed-top;">
-            <div class="container-fluid">
-                <!-- Back Button -->
-                <a href="index.html"><button type="button" id="back_btn">Back</button></a>
-               <!-- Dropdown Menu -->
-                <div class="dropdown">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" 
-                    data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" data-toggle="collapse"></span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" id="navbarContent">
-                        <a class="dropdown-item" href="index.html"><h4>Home</h4></a>
-                        <a class="dropdown-item" href="/auth"><h4>Sign-Out</h4></a>
-                    </div>
-                </div>
+         <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-sm container-fluid stick-top navbar-light bg-lignt pt-3" style="position: fixed-top;"> 
+            <!-- Brand Name -->
+            <h3 href="products.html" class="brand-name">Style <span class="advisor">Advisor</span><span></span></h3>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-tog" data-toggle="#navbarResponsive">
+                <span class="navbar-toggler-icon" data-toggle="collapse"></span>
+            </button>
+            <!-- Collapsible Menu -->
+            <div class="collapse navbar-collapse" id="navbar-tog">
+                <!-- Nav Items -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="products.html" class="nav-link">View Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Log-Out should take the user back to the home screen & send "log-out successful" message -->
+                        <a href="quiz.html" class="nav-link">Take Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Log-Out should take the user back to the home screen & send "log-out successful" message -->
+                        <a href="/auth" class="nav-link">Sign-Out</a>
+                    </li>
+                </ul>
             </div>
         </nav>
-
         <!-- Page Display -->
         <div class="container">
              <!-- Profile Section -->
