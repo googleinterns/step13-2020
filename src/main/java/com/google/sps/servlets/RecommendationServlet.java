@@ -205,6 +205,7 @@ public class RecommendationServlet extends HttpServlet {
 
     for (Entity entity : results.asIterable()) {
       Node curr = head;
+      weight = 0;
 
       productId = (long) entity.getProperty("id");
       imgUrl = (String) entity.getProperty("imgUrl");
@@ -255,6 +256,7 @@ public class RecommendationServlet extends HttpServlet {
             Node node = new Node(weight, new Summary(productId, name, imgUrl, type, tone, vegan, brand, productUrl, cost));
             node.next = curr.next;
             curr.next = node;
+            count++;
             break;
           }
 
@@ -262,10 +264,9 @@ public class RecommendationServlet extends HttpServlet {
         }
       }
 
-      if (count < 16) {
-        count++;
-      } else {
+      if (count >= 16) {
         head = head.next;
+        count--;
       }
     }
 
