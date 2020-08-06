@@ -26,16 +26,16 @@ function loadUser() {
 }
  
 function getProds(sets) {
+  console.log(sets);
+
   fetch('/product').then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
-    var count = 0;
     
     if (sets === 1) {
       productGrid.innerHTML = "";
     }
  
     products.forEach((offer) => {
-      if (count < (sets * 16) && count >= (sets * 16 - 16)) {
  
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
@@ -53,20 +53,13 @@ function getProds(sets) {
                 "</div>" +
             "</div>" +
         "</div>";
-      }
- 
-      count++;
     })
- 
-    document.getElementById("show").onclick = "getProds(" + (sets + 1) + ")";
   });
 }
  
 function filter(sets) {
  
-  if (sets === 1) {
-    document.getElementById('prodGrid').innerHTML = "";
-  }
+  document.getElementById('prodGrid').innerHTML = "";
  
   var brand = "";
   var type = "";
@@ -132,10 +125,8 @@ function filter(sets) {
  
   fetch(link).then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
-    var count = 0;
  
     products.forEach((offer) => {
-      if (count < (sets * 16) && count >= (sets * 16 - 16)) {
  
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
@@ -153,12 +144,7 @@ function filter(sets) {
                 "</div>" +
             "</div>" +
         "</div>";
-      }
- 
-      count++;
     })
- 
-    document.getElementById("show").onclick = "filter(" + (sets + 1) + ")";
   });
 }
  
@@ -190,23 +176,17 @@ function getRecs() {
             "</div>" +
         "</div>";
     })
- 
-    document.getElementById("show").onclick = "getRecs()";
   });
 }
  
 function getLiked(sets) {
- 
-  if (sets === 1) {
-    document.getElementById('prodGrid').innerHTML = "";
-  }
+
+  document.getElementById('prodGrid').innerHTML = "";
  
   fetch("/getLiked").then(response => response.json()).then((products) => {
     const productGrid = document.getElementById('prodGrid');
-    var count = 0;
  
     products.forEach((offer) => {
-      if (count < (sets * 16) && count >= (sets * 16 - 16)) {
  
         productGrid.innerHTML += 
         "<div class=\"col-md-3 col-sm-6\">" +
@@ -224,12 +204,7 @@ function getLiked(sets) {
                 "</div>" +
             "</div>" +
         "</div>";
-      }
- 
-      count++;
     })
- 
-    document.getElementById("show").onclick = "getLiked(" + (sets + 1) + ")";
   });
 }
  
